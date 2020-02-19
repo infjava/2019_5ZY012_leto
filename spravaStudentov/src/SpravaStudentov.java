@@ -14,7 +14,8 @@ public class SpravaStudentov {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Student s = new Student("1001120", "Jan", "Janech");
+        System.out.println(s);
     }
     
 }

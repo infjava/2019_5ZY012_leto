@@ -15,7 +15,9 @@ public class SpravaStudentov {
      */
     public static void main(String[] args) {
         Student s = new Student("1001120", "Jan", "Janech");
-        System.out.println(s);
+        Skupina sk = new Skupina("5zy012");
+        sk.pridajStudenta(s);
+        sk.vypisStudentov();
     }
     
 }

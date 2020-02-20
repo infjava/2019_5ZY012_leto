@@ -26,6 +26,7 @@ public class Skupina {
     }
 
     void pridajStudenta(Student novy) {
+        novy.nastavCisloSkupiny(this.cislo);
         this.zoznam.add(novy);
     }
 

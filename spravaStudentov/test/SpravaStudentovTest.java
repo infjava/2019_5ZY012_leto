@@ -20,4 +20,16 @@ public class SpravaStudentovTest {
         Assert.assertEquals("Fero", s.getMeno());
         Assert.assertEquals("Mrkva", s.getPriezvisko());
     }
+
+    @Test
+    public void pridanieStudentaDoSkupiny() {
+        Student s = new Student("123", "Fero", "Mrkva");
+        Skupina sk = new Skupina("1");
+        
+        Assert.assertNull(sk.getStudent("123"));
+        
+        sk.pridajStudenta(s);
+        
+        Assert.assertSame(s, sk.getStudent("123"));
+    }
 }

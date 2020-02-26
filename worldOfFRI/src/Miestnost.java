@@ -1,5 +1,5 @@
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class Miestnost {
     private String popisMiestnosti;
-    private HashMap<String, Miestnost> vychody;
+    private TreeMap<String, Miestnost> vychody;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -26,7 +26,7 @@ public class Miestnost {
      */
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
-        this.vychody = new HashMap<String, Miestnost>();
+        this.vychody = new TreeMap<String, Miestnost>();
     }
 
     /**

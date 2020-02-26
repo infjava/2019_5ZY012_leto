@@ -58,4 +58,22 @@ public class Miestnost {
     public String getPopis() {
         return this.popisMiestnosti;
     }
+
+    void vypisInfoOMiestnosti() {
+        System.out.println("Teraz si v miestnosti " + this.getPopis());
+        System.out.print("Vychody: ");
+        if (this.severnyVychod != null) {
+            System.out.print("sever ");
+        }
+        if (this.vychodnyVychod != null) {
+            System.out.print("vychod ");
+        }
+        if (this.juznyVychod != null) {
+            System.out.print("juh ");
+        }
+        if (this.zapadnyVychod != null) {
+            System.out.print("zapad ");
+        }
+        System.out.println();
+    }
 }

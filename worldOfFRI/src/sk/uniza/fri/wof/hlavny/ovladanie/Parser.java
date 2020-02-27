@@ -1,3 +1,5 @@
+package sk.uniza.fri.wof.hlavny.ovladanie;
+
 import java.util.Scanner;
 
 /**

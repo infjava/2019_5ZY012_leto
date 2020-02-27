@@ -1,3 +1,5 @@
+package sk.uniza.fri.wof.prostredie;
+
 
 import java.util.TreeMap;
 
@@ -47,7 +49,7 @@ public class Miestnost {
         return this.popisMiestnosti;
     }
 
-    void vypisInfoOMiestnosti() {
+    public void vypisInfoOMiestnosti() {
         System.out.println("Teraz si v miestnosti " + this.getPopis());
         System.out.print("Vychody: ");
         for (String smer : this.vychody.keySet()) {
@@ -56,7 +58,7 @@ public class Miestnost {
         System.out.println();
     }
 
-    Miestnost getVychod(String smer) {
+    public Miestnost getVychod(String smer) {
         return this.vychody.get(smer);
     }
 }

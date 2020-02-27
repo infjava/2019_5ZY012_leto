@@ -1,3 +1,5 @@
+package sk.uniza.fri.wof.hlavny.ovladanie;
+
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
  * Za ulohu ma rozpoznavat platne prikazy.

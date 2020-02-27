@@ -14,14 +14,14 @@ import java.util.Scanner;
  * @version 2012.02.21
  */
 public class Parser {
-    private NazvyPrikazov prikazy;  // odkaz na pripustne nazvy prikazov
+    private VykonavacPrikazov prikazy;  // odkaz na pripustne nazvy prikazov
     private Scanner citac;         // zdroj vstupov od hraca
 
     /**
      * Vytvori citac na citanie vstupov z terminaloveho okna.
      */
-    public Parser() {
-        this.prikazy = new NazvyPrikazov();
+    public Parser(VykonavacPrikazov prikazy) {
+        this.prikazy = prikazy;
         this.citac = new Scanner(System.in);
     }
 

@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.hlavny;
 
+import java.util.ArrayList;
 import sk.uniza.fri.wof.prostredie.Miestnost;
 import sk.uniza.fri.wof.prostredie.Predmet;
 
@@ -14,9 +15,11 @@ import sk.uniza.fri.wof.prostredie.Predmet;
  */
 public class Hrac {
     private Miestnost aktualnaMiestnost;
+    private final ArrayList<Predmet> inventar;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
+        this.inventar = new ArrayList<Predmet>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -36,5 +39,17 @@ public class Hrac {
 
     public void dvihniPredmet(String nazovPredmetu) {
         Predmet predmet = this.aktualnaMiestnost.vyberPredmet(nazovPredmetu);
+        this.inventar.add(predmet);
+    }
+
+    public void zobrazInventar() {
+        if (this.inventar.isEmpty()) {
+            System.out.println("Inventar je prazdny");
+        } else {
+            System.out.println("V inventari mas:");
+            for (Predmet predmet : this.inventar) {
+                System.out.format("- %s%n", predmet.getNazov());
+            }
+        }
     }
 }

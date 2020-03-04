@@ -15,7 +15,8 @@ import sk.uniza.fri.wof.hlavny.Hrac;
 public class VykonavacPrikazov {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
-        "chod", "ukonci", "pomoc", "dvihni", "inventar"
+        "chod", "ukonci", "pomoc", "dvihni", "inventar",
+        "zahod"
     };
 
     /**
@@ -62,6 +63,9 @@ public class VykonavacPrikazov {
                 return this.ukonciHru(prikaz);
             case "dvihni":
                 this.dvihniPredmet(hrac, prikaz);
+                return false;
+            case "zahod":
+                this.zahodPredmet(hrac, prikaz);
                 return false;
             case "inventar":
                 this.zobrazInventar(hrac);
@@ -129,5 +133,10 @@ public class VykonavacPrikazov {
 
     private void zobrazInventar(Hrac hrac) {
         hrac.zobrazInventar();
+    }
+
+    private void zahodPredmet(Hrac hrac, Prikaz prikaz) {
+        String nazovPredmetu = prikaz.getParameter();
+        hrac.zahodPredmet(nazovPredmetu);
     }
 }

@@ -72,7 +72,7 @@ public class Miestnost {
         return this.vychody.get(smer);
     }
 
-    void vlozPredmet(Predmet predmet) {
+    public void vlozPredmet(Predmet predmet) {
         this.predmety.add(predmet);
     }
 

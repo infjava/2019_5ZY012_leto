@@ -52,4 +52,14 @@ public class Hrac {
             }
         }
     }
+
+    public void zahodPredmet(String nazovPredmetu) {
+        for (Predmet predmet : this.inventar) {
+            if (predmet.getNazov().equals(nazovPredmetu)) {
+                this.inventar.remove(predmet);
+                this.aktualnaMiestnost.vlozPredmet(predmet);
+                return;
+            }
+        }
+    }
 }

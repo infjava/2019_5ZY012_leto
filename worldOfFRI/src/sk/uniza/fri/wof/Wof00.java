@@ -25,6 +25,13 @@ predmety
 - ploskacka/tapka
 - index
 - isic
+- akcie:
+  - zobrat do inventara
+    > dvihni isic
+  - pouzit
+    > pouzi navleky
+  - zahodit
+    > zahod index
 */
 
 import sk.uniza.fri.wof.hlavny.Hra;

@@ -59,11 +59,13 @@ public class Miestnost {
             System.out.print(smer + " ");
         }
         System.out.println();
-        System.out.print("Predmety: ");
-        for (Predmet predmet : this.predmety) {
-            System.out.format("%s ", predmet.getNazov());
+        if (!this.predmety.isEmpty()) {
+            System.out.print("Predmety: ");
+            for (Predmet predmet : this.predmety) {
+                System.out.format("%s ", predmet.getNazov());
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     public Miestnost getVychod(String smer) {

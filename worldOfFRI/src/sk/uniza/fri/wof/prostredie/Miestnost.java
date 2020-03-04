@@ -75,4 +75,15 @@ public class Miestnost {
     void vlozPredmet(Predmet predmet) {
         this.predmety.add(predmet);
     }
+
+    public Predmet vyberPredmet(String nazovPredmetu) {
+        for (Predmet predmet : this.predmety) {
+            if (predmet.getNazov().equals(nazovPredmetu)) {
+                this.predmety.remove(predmet);
+                return predmet;
+            }
+        }
+        
+        return null;
+    }
 }

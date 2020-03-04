@@ -6,6 +6,7 @@
 package sk.uniza.fri.wof.hlavny;
 
 import sk.uniza.fri.wof.prostredie.Miestnost;
+import sk.uniza.fri.wof.prostredie.Predmet;
 
 /**
  *
@@ -31,5 +32,9 @@ public class Hrac {
         
         this.aktualnaMiestnost = novaMiestnost;
         return true;
+    }
+
+    public void dvihniPredmet(String nazovPredmetu) {
+        Predmet predmet = this.aktualnaMiestnost.vyberPredmet(nazovPredmetu);
     }
 }

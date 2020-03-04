@@ -6,6 +6,7 @@
 package sk.uniza.fri.wof.hlavny;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import sk.uniza.fri.wof.prostredie.Miestnost;
 import sk.uniza.fri.wof.prostredie.Predmet;
 
@@ -15,11 +16,11 @@ import sk.uniza.fri.wof.prostredie.Predmet;
  */
 public class Hrac {
     private Miestnost aktualnaMiestnost;
-    private final ArrayList<Predmet> inventar;
+    private final HashMap<String, Predmet> inventar;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
-        this.inventar = new ArrayList<Predmet>();
+        this.inventar = new HashMap<String, Predmet>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -39,7 +40,7 @@ public class Hrac {
 
     public void dvihniPredmet(String nazovPredmetu) {
         Predmet predmet = this.aktualnaMiestnost.vyberPredmet(nazovPredmetu);
-        this.inventar.add(predmet);
+        this.inventar.put(predmet.getNazov(), predmet);
     }
 
     public void zobrazInventar() {
@@ -47,19 +48,14 @@ public class Hrac {
             System.out.println("Inventar je prazdny");
         } else {
             System.out.println("V inventari mas:");
-            for (Predmet predmet : this.inventar) {
-                System.out.format("- %s%n", predmet.getNazov());
+            for (String nazov : this.inventar.keySet()) {
+                System.out.format("- %s%n", nazov);
             }
         }
     }
 
     public void zahodPredmet(String nazovPredmetu) {
-        for (Predmet predmet : this.inventar) {
-            if (predmet.getNazov().equals(nazovPredmetu)) {
-                this.inventar.remove(predmet);
-                this.aktualnaMiestnost.vlozPredmet(predmet);
-                return;
-            }
-        }
+        Predmet predmet = this.inventar.remove(nazovPredmetu);
+        this.aktualnaMiestnost.vlozPredmet(predmet);
     }
 }

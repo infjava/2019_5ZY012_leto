@@ -88,7 +88,9 @@ public class VykonavacPrikazov {
         System.out.println("Zabludil si. Si sam. Tulas sa po fakulte.");
         System.out.println();
         System.out.println("Mozes pouzit tieto prikazy:");
-        System.out.println("   chod ukonci pomoc");
+        for (String prikaz : VykonavacPrikazov.PLATNE_PRIKAZY) {
+            System.out.format("- %s%n", prikaz);
+        }
     }
 
     /** 

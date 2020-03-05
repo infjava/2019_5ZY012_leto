@@ -29,6 +29,7 @@ public class HraciaPlocha {
         
         bufet.nastavVychod("sever", parkovisko);
         bufet.nastavVychod("vychod", rc);
+        bufet.vlozPredmet(new Bageta());
         
         parkovisko.nastavVychod("zapad", bus);
         parkovisko.nastavVychod("hore", vratnica);
@@ -48,7 +49,6 @@ public class HraciaPlocha {
         vratnica.nastavVychod("vychod", ic);
         vratnica.nastavVychod("dole", parkovisko);
         
-        vratnica.vlozPredmet(new Bageta());
         vratnica.vlozPredmet(new ZbytocnyPredmet("klavesnica"));
         
         rb.nastavVychod("sever", vratnica);

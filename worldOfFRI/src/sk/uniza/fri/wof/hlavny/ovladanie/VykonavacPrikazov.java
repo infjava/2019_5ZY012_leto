@@ -128,7 +128,9 @@ public class VykonavacPrikazov {
 
     private void dvihniPredmet(Hrac hrac, Prikaz prikaz) {
         String nazovPredmetu = prikaz.getParameter();
-        hrac.dvihniPredmet(nazovPredmetu);
+        if (!hrac.dvihniPredmet(nazovPredmetu)) {
+            System.out.format("Nepodarilo sa dvihnut predmet %s%n", nazovPredmetu);
+        }
     }
 
     private void zobrazInventar(Hrac hrac) {
@@ -137,6 +139,8 @@ public class VykonavacPrikazov {
 
     private void zahodPredmet(Hrac hrac, Prikaz prikaz) {
         String nazovPredmetu = prikaz.getParameter();
-        hrac.zahodPredmet(nazovPredmetu);
+        if (!hrac.zahodPredmet(nazovPredmetu)) {
+            System.out.format("Nepodarilo sa zahodit predmet %s%n", nazovPredmetu);
+        }
     }
 }

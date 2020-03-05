@@ -38,9 +38,15 @@ public class Hrac {
         return true;
     }
 
-    public void dvihniPredmet(String nazovPredmetu) {
+    public boolean dvihniPredmet(String nazovPredmetu) {
         Predmet predmet = this.aktualnaMiestnost.vyberPredmet(nazovPredmetu);
+        
+        if (predmet == null) {
+            return false;
+        }
+        
         this.inventar.put(predmet.getNazov(), predmet);
+        return true;
     }
 
     public void zobrazInventar() {
@@ -54,8 +60,14 @@ public class Hrac {
         }
     }
 
-    public void zahodPredmet(String nazovPredmetu) {
+    public boolean zahodPredmet(String nazovPredmetu) {
         Predmet predmet = this.inventar.remove(nazovPredmetu);
+        
+        if (predmet == null) {
+            return false;
+        }
+        
         this.aktualnaMiestnost.vlozPredmet(predmet);
+        return true;
     }
 }

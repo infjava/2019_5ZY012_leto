@@ -7,6 +7,7 @@ package sk.uniza.fri.wof.hlavny;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import sk.uniza.fri.wof.prostredie.Bageta;
 import sk.uniza.fri.wof.prostredie.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
 import sk.uniza.fri.wof.prostredie.ZbytocnyPredmet;
@@ -79,7 +80,11 @@ public class Hrac {
             return false;
         }
         
-        predmet.pouziSa();
+        predmet.pouziSa(this);
         return true;
+    }
+
+    public void odstranPredmet(IPredmet predmet) {
+        this.inventar.remove(predmet.getNazov());
     }
 }

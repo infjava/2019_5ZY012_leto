@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
+import sk.uniza.fri.wof.hlavny.Hrac;
+
 /**
  *
  * @author janik
@@ -23,7 +25,7 @@ public class ZbytocnyPredmet implements IPredmet {
     }
 
     @Override
-    public void pouziSa() {
+    public void pouziSa(Hrac hrac) {
         System.out.format("Pouzivas predmet %s, pouzivas, ale nist sa nedeje.%n", this.nazov);
     }
     

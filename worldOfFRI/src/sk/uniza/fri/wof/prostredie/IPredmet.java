@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
+import sk.uniza.fri.wof.hlavny.Hrac;
+
 /**
  *
  * @author janik
@@ -13,6 +15,6 @@ public interface IPredmet {
 
     String getNazov();
 
-    void pouziSa();
+    void pouziSa(Hrac hrac);
     
 }

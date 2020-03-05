@@ -7,8 +7,9 @@ package sk.uniza.fri.wof.hlavny;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import sk.uniza.fri.wof.prostredie.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
-import sk.uniza.fri.wof.prostredie.Predmet;
+import sk.uniza.fri.wof.prostredie.ZbytocnyPredmet;
 
 /**
  *
@@ -16,11 +17,11 @@ import sk.uniza.fri.wof.prostredie.Predmet;
  */
 public class Hrac {
     private Miestnost aktualnaMiestnost;
-    private final HashMap<String, Predmet> inventar;
+    private final HashMap<String, IPredmet> inventar;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
-        this.inventar = new HashMap<String, Predmet>();
+        this.inventar = new HashMap<String, IPredmet>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -39,7 +40,7 @@ public class Hrac {
     }
 
     public boolean dvihniPredmet(String nazovPredmetu) {
-        Predmet predmet = this.aktualnaMiestnost.vyberPredmet(nazovPredmetu);
+        IPredmet predmet = this.aktualnaMiestnost.vyberPredmet(nazovPredmetu);
         
         if (predmet == null) {
             return false;
@@ -61,7 +62,7 @@ public class Hrac {
     }
 
     public boolean zahodPredmet(String nazovPredmetu) {
-        Predmet predmet = this.inventar.remove(nazovPredmetu);
+        IPredmet predmet = this.inventar.remove(nazovPredmetu);
         
         if (predmet == null) {
             return false;
@@ -72,7 +73,7 @@ public class Hrac {
     }
 
     public boolean pouziPredmet(String nazovPredmetu) {
-        Predmet predmet = this.inventar.get(nazovPredmetu);
+        IPredmet predmet = this.inventar.get(nazovPredmetu);
         
         if (predmet == null) {
             return false;

@@ -9,18 +9,20 @@ package sk.uniza.fri.wof.prostredie;
  *
  * @author janik
  */
-public class Predmet {
+public class ZbytocnyPredmet implements IPredmet {
 
     private final String nazov;
 
-    public Predmet(String nazov) {
+    public ZbytocnyPredmet(String nazov) {
         this.nazov = nazov;
     }
 
+    @Override
     public String getNazov() {
         return this.nazov;
     }
 
+    @Override
     public void pouziSa() {
         System.out.format("Pouzivas predmet %s, pouzivas, ale nist sa nedeje.%n", this.nazov);
     }

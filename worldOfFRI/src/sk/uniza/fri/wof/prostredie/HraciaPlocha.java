@@ -48,7 +48,8 @@ public class HraciaPlocha {
         vratnica.nastavVychod("vychod", ic);
         vratnica.nastavVychod("dole", parkovisko);
         
-        vratnica.vlozPredmet(new Predmet("bageta"));
+        vratnica.vlozPredmet(new Bageta());
+        vratnica.vlozPredmet(new ZbytocnyPredmet("klavesnica"));
         
         rb.nastavVychod("sever", vratnica);
         rb.nastavVychod("juh", chillZone);

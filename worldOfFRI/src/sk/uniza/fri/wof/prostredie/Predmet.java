@@ -20,5 +20,9 @@ public class Predmet {
     public String getNazov() {
         return this.nazov;
     }
+
+    public void pouziSa() {
+        System.out.format("Pouzivas predmet %s, pouzivas, ale nist sa nedeje.%n", this.nazov);
+    }
     
 }

@@ -16,7 +16,7 @@ public class VykonavacPrikazov {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "dvihni", "inventar",
-        "zahod"
+        "zahod", "pouzi"
     };
 
     /**
@@ -69,6 +69,9 @@ public class VykonavacPrikazov {
                 return false;
             case "inventar":
                 this.zobrazInventar(hrac);
+                return false;
+            case "pouzi":
+                this.pouziPredmet(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -141,6 +144,13 @@ public class VykonavacPrikazov {
         String nazovPredmetu = prikaz.getParameter();
         if (!hrac.zahodPredmet(nazovPredmetu)) {
             System.out.format("Nepodarilo sa zahodit predmet %s%n", nazovPredmetu);
+        }
+    }
+
+    private void pouziPredmet(Hrac hrac, Prikaz prikaz) {
+        String nazovPredmetu = prikaz.getParameter();
+        if (!hrac.pouziPredmet(nazovPredmetu)) {
+            System.out.format("Nepodarilo sa pouzit predmet %s%n", nazovPredmetu);
         }
     }
 }

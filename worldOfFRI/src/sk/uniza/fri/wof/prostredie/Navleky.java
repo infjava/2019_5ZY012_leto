@@ -11,27 +11,33 @@ import sk.uniza.fri.wof.hlavny.Hrac;
  *
  * @author janik
  */
-public class ZbytocnyPredmet implements IPredmet {
+public class Navleky implements IPredmet {
 
-    private final String nazov;
+    private boolean obute;
 
-    public ZbytocnyPredmet(String nazov) {
-        this.nazov = nazov;
+    public Navleky() {
+        this.obute = false;
     }
 
     @Override
     public String getNazov() {
-        return this.nazov;
+        return "navleky";
     }
 
     @Override
     public void pouziSa(Hrac hrac) {
-        System.out.format("Pouzivas predmet %s, pouzivas, ale nist sa nedeje.%n", this.nazov);
+        this.obute = !this.obute;
+        
+        if (this.obute) {
+            System.out.println("Obul si si navleky, mozes vstupit do labaku");
+        } else {
+            System.out.println("Vyzul si si navleky, drz sa od labaku dalej");
+        }
     }
-
+    
     @Override
     public boolean daSaPolozit() {
-        return true;
+        return !this.obute;
     }
     
 }

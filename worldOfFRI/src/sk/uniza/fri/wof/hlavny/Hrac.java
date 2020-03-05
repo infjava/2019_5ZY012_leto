@@ -69,6 +69,10 @@ public class Hrac {
             return false;
         }
         
+        if (!predmet.daSaPolozit()) {
+            return false;
+        }
+        
         this.aktualnaMiestnost.vlozPredmet(predmet);
         return true;
     }

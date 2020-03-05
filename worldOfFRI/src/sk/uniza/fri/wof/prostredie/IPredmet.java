@@ -17,4 +17,5 @@ public interface IPredmet {
 
     void pouziSa(Hrac hrac);
     
+    boolean daSaPolozit();
 }

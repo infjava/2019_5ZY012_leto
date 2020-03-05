@@ -32,5 +32,10 @@ public class Bageta implements IPredmet {
             hrac.odstranPredmet(this);
         }
     }
+
+    @Override
+    public boolean daSaPolozit() {
+        return true;
+    }
     
 }

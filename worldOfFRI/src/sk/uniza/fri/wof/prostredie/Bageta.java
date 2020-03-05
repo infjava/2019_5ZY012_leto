@@ -8,6 +8,12 @@ package sk.uniza.fri.wof.prostredie;
 
 public class Bageta implements IPredmet {
 
+    private int pocetZahryznuti;
+
+    public Bageta() {
+        this.pocetZahryznuti = 0;
+    }
+
     @Override
     public String getNazov() {
         return "bageta";
@@ -16,6 +22,12 @@ public class Bageta implements IPredmet {
     @Override
     public void pouziSa() {
         System.out.println("Chrum chrum, mnam mnam");
+        this.pocetZahryznuti++;
+        if (this.pocetZahryznuti < 7) {
+            System.out.format("Zostava ti %.2f%% bagety%n", (7 - this.pocetZahryznuti) * 100.0 / 7);
+        } else {
+            System.out.println("Pazravec");
+        }
     }
     
 }

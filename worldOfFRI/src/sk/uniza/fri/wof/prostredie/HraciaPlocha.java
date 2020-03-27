@@ -51,6 +51,7 @@ public class HraciaPlocha {
         
         vratnica.vlozPredmet(new ZbytocnyPredmet("klavesnica"));
         vratnica.vlozPredmet(new Navleky());
+        vratnica.vlozPredmet(new Dezo());
         
         rb.nastavVychod("sever", vratnica);
         rb.nastavVychod("juh", chillZone);

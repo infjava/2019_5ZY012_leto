@@ -19,10 +19,12 @@ import sk.uniza.fri.wof.prostredie.ZbytocnyPredmet;
 public class Hrac {
     private Miestnost aktualnaMiestnost;
     private final HashMap<String, IPredmet> inventar;
+    private final Questbook questbook;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
         this.inventar = new HashMap<String, IPredmet>();
+        this.questbook = new Questbook();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -90,5 +92,9 @@ public class Hrac {
 
     public void odstranPredmet(IPredmet predmet) {
         this.inventar.remove(predmet.getNazov());
+    }
+
+    public Questbook getQuestbook() {
+        return this.questbook;
     }
 }

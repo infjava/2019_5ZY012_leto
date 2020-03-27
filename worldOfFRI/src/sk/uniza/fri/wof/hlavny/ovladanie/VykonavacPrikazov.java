@@ -16,7 +16,7 @@ public class VykonavacPrikazov {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "dvihni", "inventar",
-        "zahod", "pouzi"
+        "zahod", "pouzi", "questbook"
     };
 
     /**
@@ -72,6 +72,9 @@ public class VykonavacPrikazov {
                 return false;
             case "pouzi":
                 this.pouziPredmet(hrac, prikaz);
+                return false;
+            case "questbook":
+                this.zobrazQuestbook(hrac);
                 return false;
             default:
                 return false;
@@ -154,5 +157,9 @@ public class VykonavacPrikazov {
         if (!hrac.pouziPredmet(nazovPredmetu)) {
             System.out.format("Nepodarilo sa pouzit predmet %s%n", nazovPredmetu);
         }
+    }
+
+    private void zobrazQuestbook(Hrac hrac) {
+        hrac.getQuestbook().vypisQuesty();
     }
 }

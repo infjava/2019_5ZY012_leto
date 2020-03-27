@@ -39,6 +39,9 @@ public class Hrac {
         }
         
         this.aktualnaMiestnost = novaMiestnost;
+        
+        this.questbook.getRiadic().hracSaPohol();
+        
         return true;
     }
 

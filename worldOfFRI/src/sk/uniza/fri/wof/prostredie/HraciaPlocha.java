@@ -53,7 +53,16 @@ public class HraciaPlocha {
         vratnica.vlozPredmet(new Navleky());
         vratnica.vlozPredmet(new Dezo());
         
-        vratnica.postavNpc(new NpcSRozhovorom("upratovacka"));
+        VrcholRozhovoru zaciatocny = new VrcholRozhovoru(null,
+            new HranaRozhovoru("kde najdem ucitela?", new VrcholRozhovoru("Ktory?",
+                new HranaRozhovoru("Janech", new VrcholRozhovoru("Ma cvicenie")),
+                new HranaRozhovoru("dekan", new VrcholRozhovoru("Netusim"))
+            )),
+            new HranaRozhovoru("nemate toaletny papier?", new VrcholRozhovoru("Mam, ale nedam. Kup si v Tescu.")),
+            new HranaRozhovoru("kde to som?", new VrcholRozhovoru("Pouzi prikaz pomoc"))
+        );
+        
+        vratnica.postavNpc(new NpcSRozhovorom("upratovacka", zaciatocny));
         
         rb.nastavVychod("sever", vratnica);
         rb.nastavVychod("juh", chillZone);

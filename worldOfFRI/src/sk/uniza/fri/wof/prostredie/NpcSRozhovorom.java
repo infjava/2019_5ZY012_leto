@@ -10,45 +10,24 @@ import java.util.Scanner;
 
 public class NpcSRozhovorom extends Npc {
 
-    public NpcSRozhovorom(String meno) {
+    private final VrcholRozhovoru zaciatokRozhovoru;
+
+    NpcSRozhovorom(String meno, VrcholRozhovoru zaciatokRozhovoru) {
         super(meno);
+        this.zaciatokRozhovoru = zaciatokRozhovoru;
     }
 
     public void spustiRozhovor() {
         Scanner vstup = new Scanner(System.in);
+        VrcholRozhovoru aktualny = this.zaciatokRozhovoru;
         
-        System.out.println("1) kde najdem ucitela?");
-        System.out.println("2) nemate toaletny papier?");
-        System.out.println("3) kde to som?");
-        System.out.print("Vyber si[1-3]: ");
-        int moznost = vstup.nextInt();
-        switch (moznost) {
-            case 1:
-                System.out.println("Ktory?");
-                System.out.println("1) Janech");
-                System.out.println("2) dekan");
-                System.out.print("Vyber si[1-2]: ");
-                moznost = vstup.nextInt();
-                switch (moznost) {
-                    case 1:
-                        System.out.println("Ma cvicenie");
-                        break;
-                    case 2:
-                        System.out.println("Netusim");
-                        break;
-                    default:
-                        throw new AssertionError();
-                }
-                break;
-            case 2:
-                System.out.println("Mam, ale nedam. Kup si v Tescu.");
-                break;
-            case 3:
-                System.out.println("Pouzi prikaz pomoc");
-                break;
-            default:
-                throw new AssertionError();
-        }
+        do {
+            aktualny.vypis();
+            int moznost = vstup.nextInt();
+            aktualny = aktualny.getNasledujuci(moznost);
+        } while (!aktualny.jeKoniecRozhovoru());
+        
+        aktualny.vypis();
     }
     
 }

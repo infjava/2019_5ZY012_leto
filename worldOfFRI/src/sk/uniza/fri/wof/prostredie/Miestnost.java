@@ -88,4 +88,8 @@ public class Miestnost {
     void postavNpc(Npc npc) {
         this.npccka.put(npc.getMeno(), npc);
     }
+
+    public Npc getNpc(String menoNpc) {
+        return this.npccka.get(menoNpc);
+    }
 }

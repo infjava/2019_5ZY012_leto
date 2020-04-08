@@ -16,7 +16,7 @@ public class VykonavacPrikazov {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "dvihni", "inventar",
-        "zahod", "pouzi", "questbook"
+        "zahod", "pouzi", "questbook", "dobryden"
     };
 
     /**
@@ -75,6 +75,9 @@ public class VykonavacPrikazov {
                 return false;
             case "questbook":
                 this.zobrazQuestbook(hrac);
+                return false;
+            case "dobryden":
+                this.oslovNpc(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -161,5 +164,12 @@ public class VykonavacPrikazov {
 
     private void zobrazQuestbook(Hrac hrac) {
         hrac.getQuestbook().vypisQuesty();
+    }
+
+    private void oslovNpc(Hrac hrac, Prikaz prikaz) {
+        String menoNpc = prikaz.getParameter();
+        if (!hrac.oslovNpc(menoNpc)) {
+            System.out.format("Nenasiel si npc %s%n", menoNpc);
+        }
     }
 }

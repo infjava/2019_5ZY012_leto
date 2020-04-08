@@ -10,6 +10,8 @@ import java.util.HashMap;
 import sk.uniza.fri.wof.prostredie.Bageta;
 import sk.uniza.fri.wof.prostredie.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
+import sk.uniza.fri.wof.prostredie.Npc;
+import sk.uniza.fri.wof.prostredie.NpcSRozhovorom;
 import sk.uniza.fri.wof.prostredie.ZbytocnyPredmet;
 
 /**
@@ -99,5 +101,16 @@ public class Hrac {
 
     public Questbook getQuestbook() {
         return this.questbook;
+    }
+
+    public boolean oslovNpc(String menoNpc) {
+        Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
+        
+        if (npc instanceof NpcSRozhovorom) {
+            ((NpcSRozhovorom) npc).spustiRozhovor();
+            return true;
+        }
+        
+        return false;
     }
 }

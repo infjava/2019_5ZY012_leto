@@ -53,7 +53,7 @@ public class HraciaPlocha {
         vratnica.vlozPredmet(new Navleky());
         vratnica.vlozPredmet(new Dezo());
         
-        vratnica.postavNpc(new Npc("upratovacka"));
+        vratnica.postavNpc(new NpcSRozhovorom("upratovacka"));
         
         rb.nastavVychod("sever", vratnica);
         rb.nastavVychod("juh", chillZone);

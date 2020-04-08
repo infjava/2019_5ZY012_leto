@@ -5,20 +5,11 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
-/**
- *
- * @author janik
- */
-public abstract class Npc {
 
-    private final String meno;
+public class NpcSRozhovorom extends Npc {
 
-    public Npc(String meno) {
-        this.meno = meno;
-    }
-
-    public String getMeno() {
-        return this.meno;
+    public NpcSRozhovorom(String meno) {
+        super(meno);
     }
     
 }

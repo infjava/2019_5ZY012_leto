@@ -12,8 +12,11 @@ npc
 - robot
 - akcie:
   - rozhovor
+    > dobryden upratovacka
   - suboj - papier, kamen, noznice
+    > utoc ucitel
   - obchod
+    > masnieco robot
 questy
 - kupit bagetu pre npc, aby otvorilo dvere
 - robot da hadanku

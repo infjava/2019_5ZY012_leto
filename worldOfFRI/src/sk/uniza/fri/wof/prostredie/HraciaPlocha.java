@@ -29,7 +29,6 @@ public class HraciaPlocha {
         
         bufet.nastavVychod("sever", parkovisko);
         bufet.nastavVychod("vychod", rc);
-        bufet.vlozPredmet(new Bageta());
         
         parkovisko.nastavVychod("zapad", bus);
         parkovisko.nastavVychod("hore", vratnica);
@@ -50,7 +49,6 @@ public class HraciaPlocha {
         vratnica.nastavVychod("dole", parkovisko);
         
         vratnica.vlozPredmet(new ZbytocnyPredmet("klavesnica"));
-        vratnica.vlozPredmet(new Navleky());
         vratnica.vlozPredmet(new Dezo());
         
         VrcholRozhovoru zaciatocny = new VrcholRozhovoru(null,
@@ -63,6 +61,11 @@ public class HraciaPlocha {
         );
         
         vratnica.postavNpc(new NpcSRozhovorom("upratovacka", zaciatocny));
+        vratnica.postavNpc(new Obchodnik("kucharka",
+            new ZbytocnyPredmet("pizza"),
+            new Bageta(),
+            new Navleky()
+        ));
         
         rb.nastavVychod("sever", vratnica);
         rb.nastavVychod("juh", chillZone);

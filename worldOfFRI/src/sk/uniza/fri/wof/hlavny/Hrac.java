@@ -12,6 +12,7 @@ import sk.uniza.fri.wof.prostredie.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
 import sk.uniza.fri.wof.prostredie.Npc;
 import sk.uniza.fri.wof.prostredie.NpcSRozhovorom;
+import sk.uniza.fri.wof.prostredie.Obchodnik;
 import sk.uniza.fri.wof.prostredie.ZbytocnyPredmet;
 
 /**
@@ -108,6 +109,17 @@ public class Hrac {
         
         if (npc instanceof NpcSRozhovorom) {
             ((NpcSRozhovorom) npc).spustiRozhovor();
+            return true;
+        }
+        
+        return false;
+    }
+
+    public boolean nakupOdNpc(String menoNpc) {
+        Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
+        
+        if (npc instanceof Obchodnik) {
+            ((Obchodnik) npc).zobrazTovar();
             return true;
         }
         

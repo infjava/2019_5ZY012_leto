@@ -11,6 +11,7 @@ import java.util.Scanner;
 import sk.uniza.fri.wof.prostredie.Bageta;
 import sk.uniza.fri.wof.prostredie.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
+import sk.uniza.fri.wof.prostredie.Nepriatel;
 import sk.uniza.fri.wof.prostredie.Npc;
 import sk.uniza.fri.wof.prostredie.NpcSRozhovorom;
 import sk.uniza.fri.wof.prostredie.Obchodnik;
@@ -158,6 +159,31 @@ public class Hrac {
             
             IPredmet tovar = obchodnik.vymenPredmet(cisloTovaru, predmetZInventara);
             this.inventar.put(tovar.getNazov(), tovar);
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+    public boolean utocNaNpc(String menoNpc) {
+        Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
+        
+        if (npc instanceof Nepriatel) {
+            System.out.print("Ako chces zautocit [papier/kamen/noznice]");
+            String utok = new Scanner(System.in).nextLine();
+            
+            switch (((Nepriatel) npc).utok(utok)) {
+                case VYHRAL_HRAC:
+                    System.out.println("Vyhral si");
+                    break;
+                case VYHRAL_NEPRIATEL:
+                    System.out.format("Vyhral %s%n", menoNpc);
+                    break;
+                case REMIZA:
+                    System.out.println("Bola remiza");
+                    break;
+            }
             
             return true;
         }

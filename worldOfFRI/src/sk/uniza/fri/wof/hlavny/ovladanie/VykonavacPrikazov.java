@@ -17,7 +17,7 @@ public class VykonavacPrikazov {
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "dvihni", "inventar",
         "zahod", "pouzi", "questbook", "dobryden",
-        "masnieco"
+        "masnieco", "utoc"
     };
 
     /**
@@ -82,6 +82,9 @@ public class VykonavacPrikazov {
                 return false;
             case "masnieco":
                 this.nakupOdNpc(hrac, prikaz);
+                return false;
+            case "utoc":
+                this.utocNaNpc(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -180,6 +183,13 @@ public class VykonavacPrikazov {
     private void nakupOdNpc(Hrac hrac, Prikaz prikaz) {
         String menoNpc = prikaz.getParameter();
         if (!hrac.nakupOdNpc(menoNpc)) {
+            System.out.format("Nenasiel si npc %s%n", menoNpc);
+        }
+    }
+
+    private void utocNaNpc(Hrac hrac, Prikaz prikaz) {
+        String menoNpc = prikaz.getParameter();
+        if (!hrac.utocNaNpc(menoNpc)) {
             System.out.format("Nenasiel si npc %s%n", menoNpc);
         }
     }

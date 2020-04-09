@@ -31,5 +31,11 @@ public class Obchodnik extends Npc {
             cislo++;
         }
     }
+
+    public IPredmet vymenPredmet(int cisloTovaru, IPredmet predmetZInventara) {
+        IPredmet tovar = this.tovar.get(cisloTovaru - 1);
+        this.tovar.set(cisloTovaru - 1, predmetZInventara);
+        return tovar;
+    }
     
 }

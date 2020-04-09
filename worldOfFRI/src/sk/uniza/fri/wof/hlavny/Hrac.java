@@ -7,6 +7,7 @@ package sk.uniza.fri.wof.hlavny;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import sk.uniza.fri.wof.prostredie.Bageta;
 import sk.uniza.fri.wof.prostredie.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
@@ -120,6 +121,33 @@ public class Hrac {
         
         if (npc instanceof Obchodnik) {
             ((Obchodnik) npc).zobrazTovar();
+            
+            if (this.inventar.isEmpty()) {
+                return true;
+            }
+            
+            System.out.print("Co chces kupit: ");
+            int cisloTovaru = new Scanner(System.in).nextInt();
+            
+            System.out.println("V inventari mas:");
+            int cislo = 1;
+            ArrayList<String> zoznamNazvovPredmetov = new ArrayList<String>();
+            for (String nazov : this.inventar.keySet()) {
+                System.out.format("%d) %s%n", cislo, nazov);
+                zoznamNazvovPredmetov.add(nazov);
+                cislo++;
+            }
+            
+            System.out.print("Za co chces vymenit: ");
+            int cisloPredmetuZInventara = new Scanner(System.in).nextInt();
+            
+            IPredmet predmetZInventara = this.inventar.remove(
+                zoznamNazvovPredmetov.get(cisloPredmetuZInventara - 1)
+            );
+            
+            IPredmet tovar = ((Obchodnik) npc).vymenPredmet(cisloTovaru, predmetZInventara);
+            this.inventar.put(tovar.getNazov(), tovar);
+            
             return true;
         }
         

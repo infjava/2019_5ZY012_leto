@@ -13,15 +13,12 @@ import java.util.ArrayList;
  */
 public class Obchodnik extends Npc {
 
-    private final ArrayList<IPredmet> tovar;
+    private final IPredmet[] tovar;
 
     public Obchodnik(String meno, IPredmet... tovar) {
         super(meno);
         
-        this.tovar = new ArrayList<IPredmet>();
-        for (IPredmet predmet : tovar) {
-            this.tovar.add(predmet);
-        }
+        this.tovar = tovar;
     }
 
     public void zobrazTovar() {
@@ -33,8 +30,8 @@ public class Obchodnik extends Npc {
     }
 
     public IPredmet vymenPredmet(int cisloTovaru, IPredmet predmetZInventara) {
-        IPredmet tovar = this.tovar.get(cisloTovaru - 1);
-        this.tovar.set(cisloTovaru - 1, predmetZInventara);
+        IPredmet tovar = this.tovar[cisloTovaru - 1];
+        this.tovar[cisloTovaru - 1] = predmetZInventara;
         return tovar;
     }
     

@@ -120,14 +120,17 @@ public class Hrac {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
         
         if (npc instanceof Obchodnik) {
-            ((Obchodnik) npc).zobrazTovar();
+            final Scanner vstup = new Scanner(System.in);
+            final Obchodnik obchodnik = (Obchodnik) npc;
+            
+            obchodnik.zobrazTovar();
             
             if (this.inventar.isEmpty()) {
                 return true;
             }
             
             System.out.print("Co chces kupit [0 ak nic]: ");
-            int cisloTovaru = new Scanner(System.in).nextInt();
+            int cisloTovaru = vstup.nextInt();
             
             if (cisloTovaru == 0) {
                 return true;
@@ -143,7 +146,7 @@ public class Hrac {
             }
             
             System.out.print("Za co chces vymenit [0 ak nic]: ");
-            int cisloPredmetuZInventara = new Scanner(System.in).nextInt();
+            int cisloPredmetuZInventara = vstup.nextInt();
             
             if (cisloPredmetuZInventara == 0) {
                 return true;
@@ -153,7 +156,7 @@ public class Hrac {
                 zoznamNazvovPredmetov.get(cisloPredmetuZInventara - 1)
             );
             
-            IPredmet tovar = ((Obchodnik) npc).vymenPredmet(cisloTovaru, predmetZInventara);
+            IPredmet tovar = obchodnik.vymenPredmet(cisloTovaru, predmetZInventara);
             this.inventar.put(tovar.getNazov(), tovar);
             
             return true;

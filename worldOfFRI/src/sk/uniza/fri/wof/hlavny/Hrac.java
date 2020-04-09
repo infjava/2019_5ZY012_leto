@@ -126,8 +126,12 @@ public class Hrac {
                 return true;
             }
             
-            System.out.print("Co chces kupit: ");
+            System.out.print("Co chces kupit [0 ak nic]: ");
             int cisloTovaru = new Scanner(System.in).nextInt();
+            
+            if (cisloTovaru == 0) {
+                return true;
+            }
             
             System.out.println("V inventari mas:");
             int cislo = 1;
@@ -138,8 +142,12 @@ public class Hrac {
                 cislo++;
             }
             
-            System.out.print("Za co chces vymenit: ");
+            System.out.print("Za co chces vymenit [0 ak nic]: ");
             int cisloPredmetuZInventara = new Scanner(System.in).nextInt();
+            
+            if (cisloPredmetuZInventara == 0) {
+                return true;
+            }
             
             IPredmet predmetZInventara = this.inventar.remove(
                 zoznamNazvovPredmetov.get(cisloPredmetuZInventara - 1)

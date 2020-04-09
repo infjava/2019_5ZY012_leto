@@ -10,7 +10,17 @@ package sk.uniza.fri.wof.prostredie;
  * @author janik
  */
 public enum Utok {
-    PAPIER,
-    KAMEN,
-    NOZNICE
+    PAPIER("KAMEN"),
+    KAMEN("NOZNICE"),
+    NOZNICE("PAPIER");
+    
+    private final String vyhraNad;
+    
+    Utok(String vyhraNad) {
+        this.vyhraNad = vyhraNad;
+    }
+    
+    public boolean vyhra(Utok nad) {
+        return nad.name().equals(this.vyhraNad);
+    }
 }

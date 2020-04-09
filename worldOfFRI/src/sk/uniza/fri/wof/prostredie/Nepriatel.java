@@ -18,21 +18,14 @@ public class Nepriatel extends Npc {
     }
 
     public VysledokUtoku utok(Utok utokHraca) {
-        Utok[][] vyhry = {
-            {Utok.PAPIER, Utok.KAMEN},
-            {Utok.KAMEN, Utok.NOZNICE},
-            {Utok.NOZNICE, Utok.PAPIER}
-        };
         Random nahoda = new Random();
         int nahodnyTah = nahoda.nextInt(Utok.values().length);
         Utok utokNepriatela = Utok.values()[nahodnyTah];
         
         System.out.format("Utok: %s (hrac) <> %s (%s)%n", utokHraca, utokNepriatela, this.getMeno());
         
-        for (Utok[] kombinacia : vyhry) {
-            if (kombinacia[0].equals(utokHraca) && kombinacia[1].equals(utokNepriatela)) {
-                return VysledokUtoku.VYHRAL_HRAC;
-            }
+        if (utokHraca.vyhra(utokNepriatela)) {
+            return VysledokUtoku.VYHRAL_HRAC;
         }
         
         if (utokHraca.equals(utokNepriatela)) {

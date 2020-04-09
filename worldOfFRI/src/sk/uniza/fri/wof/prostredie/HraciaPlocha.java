@@ -29,6 +29,11 @@ public class HraciaPlocha {
         
         bufet.nastavVychod("sever", parkovisko);
         bufet.nastavVychod("vychod", rc);
+        bufet.postavNpc(new Obchodnik("kucharka",
+            new ZbytocnyPredmet("pizza"),
+            new Bageta(),
+            new Navleky()
+        ));
         
         parkovisko.nastavVychod("zapad", bus);
         parkovisko.nastavVychod("hore", vratnica);
@@ -61,11 +66,7 @@ public class HraciaPlocha {
         );
         
         vratnica.postavNpc(new NpcSRozhovorom("upratovacka", zaciatocny));
-        vratnica.postavNpc(new Obchodnik("kucharka",
-            new ZbytocnyPredmet("pizza"),
-            new Bageta(),
-            new Navleky()
-        ));
+        vratnica.postavNpc(new Nepriatel("ucitel"));
         
         rb.nastavVychod("sever", vratnica);
         rb.nastavVychod("juh", chillZone);

@@ -15,6 +15,7 @@ import sk.uniza.fri.wof.prostredie.Nepriatel;
 import sk.uniza.fri.wof.prostredie.Npc;
 import sk.uniza.fri.wof.prostredie.NpcSRozhovorom;
 import sk.uniza.fri.wof.prostredie.Obchodnik;
+import sk.uniza.fri.wof.prostredie.Utok;
 import sk.uniza.fri.wof.prostredie.ZbytocnyPredmet;
 
 /**
@@ -171,7 +172,7 @@ public class Hrac {
         
         if (npc instanceof Nepriatel) {
             System.out.print("Ako chces zautocit [papier/kamen/noznice]");
-            String utok = new Scanner(System.in).nextLine();
+            Utok utok = Utok.valueOf(new Scanner(System.in).nextLine().toUpperCase());
             
             switch (((Nepriatel) npc).utok(utok)) {
                 case VYHRAL_HRAC:

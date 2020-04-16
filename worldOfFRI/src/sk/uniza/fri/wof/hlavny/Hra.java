@@ -55,12 +55,16 @@ public class Hra  {
                 
         boolean jeKoniec;
         
-        do {
-            Prikaz prikaz = this.parser.nacitajPrikaz();
-            jeKoniec = this.vykonavacPrikazov.vykonajPrikaz(this.hrac, prikaz);
-        } while (!jeKoniec);
-        
-        System.out.println("Maj sa fajn!");
+        try {
+            do {
+                Prikaz prikaz = this.parser.nacitajPrikaz();
+                jeKoniec = this.vykonavacPrikazov.vykonajPrikaz(this.hrac, prikaz);
+            } while (!jeKoniec);
+            
+            System.out.println("Maj sa fajn!");
+        } catch (HracZomrelException e) {
+            System.out.println("Tak sa si mrtvy. Co teraz?");
+        }
     }
 
     /**

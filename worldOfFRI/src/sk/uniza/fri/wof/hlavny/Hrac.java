@@ -181,7 +181,7 @@ public class Hrac {
                 break;
             case VYHRAL_NEPRIATEL:
                 System.out.format("Vyhral %s%n", menoNpc);
-                break;
+                throw new HracZomrelException();
             case REMIZA:
                 System.out.println("Bola remiza");
                 break;

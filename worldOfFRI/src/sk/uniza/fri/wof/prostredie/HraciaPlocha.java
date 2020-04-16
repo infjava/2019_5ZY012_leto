@@ -5,6 +5,16 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
+import sk.uniza.fri.wof.prostredie.predmety.Navleky;
+import sk.uniza.fri.wof.prostredie.predmety.Bageta;
+import sk.uniza.fri.wof.prostredie.predmety.ZbytocnyPredmet;
+import sk.uniza.fri.wof.prostredie.predmety.Dezo;
+import sk.uniza.fri.wof.prostredie.npccka.VrcholRozhovoru;
+import sk.uniza.fri.wof.prostredie.npccka.Obchodnik;
+import sk.uniza.fri.wof.prostredie.npccka.NpcSRozhovorom;
+import sk.uniza.fri.wof.prostredie.npccka.HranaRozhovoru;
+import sk.uniza.fri.wof.prostredie.npccka.Nepriatel;
+
 /**
  *
  * @author janik

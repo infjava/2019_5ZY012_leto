@@ -5,18 +5,19 @@
  */
 package sk.uniza.fri.wof.hlavny;
 
+import sk.uniza.fri.wof.questy.Questbook;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import sk.uniza.fri.wof.prostredie.Bageta;
-import sk.uniza.fri.wof.prostredie.IPredmet;
+import sk.uniza.fri.wof.prostredie.predmety.Bageta;
+import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
-import sk.uniza.fri.wof.prostredie.Nepriatel;
-import sk.uniza.fri.wof.prostredie.Npc;
-import sk.uniza.fri.wof.prostredie.NpcSRozhovorom;
-import sk.uniza.fri.wof.prostredie.Obchodnik;
-import sk.uniza.fri.wof.prostredie.Utok;
-import sk.uniza.fri.wof.prostredie.ZbytocnyPredmet;
+import sk.uniza.fri.wof.prostredie.npccka.Nepriatel;
+import sk.uniza.fri.wof.prostredie.npccka.Npc;
+import sk.uniza.fri.wof.prostredie.npccka.NpcSRozhovorom;
+import sk.uniza.fri.wof.prostredie.npccka.Obchodnik;
+import sk.uniza.fri.wof.prostredie.npccka.Utok;
+import sk.uniza.fri.wof.prostredie.predmety.ZbytocnyPredmet;
 
 /**
  *

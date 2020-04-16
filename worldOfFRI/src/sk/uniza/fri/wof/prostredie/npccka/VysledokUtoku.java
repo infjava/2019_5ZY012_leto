@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.wof.prostredie;
-
-import sk.uniza.fri.wof.hlavny.Hrac;
+package sk.uniza.fri.wof.prostredie.npccka;
 
 /**
  *
  * @author janik
  */
-public interface IPredmet {
-
-    String getNazov();
-
-    void pouziSa(Hrac hrac);
-    
-    boolean daSaPolozit();
+public enum VysledokUtoku {
+    VYHRAL_HRAC,
+    VYHRAL_NEPRIATEL,
+    REMIZA
 }

@@ -1,6 +1,8 @@
 package sk.uniza.fri.wof.prostredie;
 
 
+import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
+import sk.uniza.fri.wof.prostredie.npccka.Npc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.wof.prostredie;
+package sk.uniza.fri.wof.prostredie.npccka;
 
 /**
  *
  * @author janik
  */
-class HranaRozhovoru {
+public class HranaRozhovoru {
 
     private final String replikaHraca;
     private final VrcholRozhovoru cielovyVrchol;
 
-    HranaRozhovoru(String replikaHraca, VrcholRozhovoru cielovyVrchol) {
+    public HranaRozhovoru(String replikaHraca, VrcholRozhovoru cielovyVrchol) {
         this.replikaHraca = replikaHraca;
         this.cielovyVrchol = cielovyVrchol;
         

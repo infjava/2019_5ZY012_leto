@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.wof.prostredie;
+package sk.uniza.fri.wof.prostredie.npccka;
 
 import java.util.Scanner;
 
@@ -12,7 +12,7 @@ public class NpcSRozhovorom extends Npc {
 
     private final VrcholRozhovoru zaciatokRozhovoru;
 
-    NpcSRozhovorom(String meno, VrcholRozhovoru zaciatokRozhovoru) {
+    public NpcSRozhovorom(String meno, VrcholRozhovoru zaciatokRozhovoru) {
         super(meno);
         this.zaciatokRozhovoru = zaciatokRozhovoru;
     }

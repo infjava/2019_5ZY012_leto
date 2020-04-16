@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.wof.prostredie;
+package sk.uniza.fri.wof.prostredie.npccka;
 
 import java.util.Random;
 

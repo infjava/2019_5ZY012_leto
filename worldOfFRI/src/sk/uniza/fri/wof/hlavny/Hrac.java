@@ -122,77 +122,81 @@ public class Hrac {
         ((NpcSRozhovorom) npc).spustiRozhovor();
     }
 
-    public boolean nakupOdNpc(String menoNpc) {
+    public void nakupOdNpc(String menoNpc) throws NpcNenajdeneException, NpcNespravnehoTypuException {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
         
-        if (npc instanceof Obchodnik) {
-            final Scanner vstup = new Scanner(System.in);
-            final Obchodnik obchodnik = (Obchodnik) npc;
-            
-            obchodnik.zobrazTovar();
-            
-            if (this.inventar.isEmpty()) {
-                return true;
-            }
-            
-            System.out.print("Co chces kupit [0 ak nic]: ");
-            int cisloTovaru = vstup.nextInt();
-            
-            if (cisloTovaru == 0) {
-                return true;
-            }
-            
-            System.out.println("V inventari mas:");
-            int cislo = 1;
-            ArrayList<String> zoznamNazvovPredmetov = new ArrayList<String>();
-            for (String nazov : this.inventar.keySet()) {
-                System.out.format("%d) %s%n", cislo, nazov);
-                zoznamNazvovPredmetov.add(nazov);
-                cislo++;
-            }
-            
-            System.out.print("Za co chces vymenit [0 ak nic]: ");
-            int cisloPredmetuZInventara = vstup.nextInt();
-            
-            if (cisloPredmetuZInventara == 0) {
-                return true;
-            }
-            
-            IPredmet predmetZInventara = this.inventar.remove(
-                zoznamNazvovPredmetov.get(cisloPredmetuZInventara - 1)
-            );
-            
-            IPredmet tovar = obchodnik.vymenPredmet(cisloTovaru, predmetZInventara);
-            this.inventar.put(tovar.getNazov(), tovar);
-            
-            return true;
+        if (npc == null) {
+            throw new NpcNenajdeneException();
         }
         
-        return false;
+        if (!(npc instanceof Obchodnik)) {
+            throw new NpcNespravnehoTypuException();
+        }
+        
+        final Scanner vstup = new Scanner(System.in);
+        final Obchodnik obchodnik = (Obchodnik) npc;
+
+        obchodnik.zobrazTovar();
+
+        if (this.inventar.isEmpty()) {
+            return;
+        }
+
+        System.out.print("Co chces kupit [0 ak nic]: ");
+        int cisloTovaru = vstup.nextInt();
+
+        if (cisloTovaru == 0) {
+            return;
+        }
+
+        System.out.println("V inventari mas:");
+        int cislo = 1;
+        ArrayList<String> zoznamNazvovPredmetov = new ArrayList<String>();
+        for (String nazov : this.inventar.keySet()) {
+            System.out.format("%d) %s%n", cislo, nazov);
+            zoznamNazvovPredmetov.add(nazov);
+            cislo++;
+        }
+
+        System.out.print("Za co chces vymenit [0 ak nic]: ");
+        int cisloPredmetuZInventara = vstup.nextInt();
+
+        if (cisloPredmetuZInventara == 0) {
+            return;
+        }
+
+        IPredmet predmetZInventara = this.inventar.remove(
+            zoznamNazvovPredmetov.get(cisloPredmetuZInventara - 1)
+        );
+
+        IPredmet tovar = obchodnik.vymenPredmet(cisloTovaru, predmetZInventara);
+        this.inventar.put(tovar.getNazov(), tovar);
     }
 
-    public boolean utocNaNpc(String menoNpc) {
+    public void utocNaNpc(String menoNpc) throws NpcNenajdeneException, NpcNespravnehoTypuException {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
         
-        if (npc instanceof Nepriatel) {
-            System.out.print("Ako chces zautocit [papier/kamen/noznice]");
-            Utok utok = Utok.valueOf(new Scanner(System.in).nextLine().toUpperCase());
-            
-            switch (((Nepriatel) npc).utok(utok)) {
-                case VYHRAL_HRAC:
-                    System.out.println("Vyhral si");
-                    break;
-                case VYHRAL_NEPRIATEL:
-                    System.out.format("Vyhral %s%n", menoNpc);
-                    break;
-                case REMIZA:
-                    System.out.println("Bola remiza");
-                    break;
-            }
-            
-            return true;
+        if (npc == null) {
+            throw new NpcNenajdeneException();
         }
         
-        return false;
+        if (!(npc instanceof Nepriatel)) {
+            throw new NpcNespravnehoTypuException();
+        }
+        
+        System.out.print("Ako chces zautocit [papier/kamen/noznice]");
+        Utok utok = Utok.valueOf(new Scanner(System.in).nextLine().toUpperCase());
+
+        switch (((Nepriatel) npc).utok(utok)) {
+            case VYHRAL_HRAC:
+                System.out.println("Vyhral si");
+                break;
+            case VYHRAL_NEPRIATEL:
+                System.out.format("Vyhral %s%n", menoNpc);
+                break;
+            case REMIZA:
+                System.out.println("Bola remiza");
+                break;
+        }
     }
 }

@@ -188,15 +188,23 @@ public class VykonavacPrikazov {
 
     private void nakupOdNpc(Hrac hrac, Prikaz prikaz) {
         String menoNpc = prikaz.getParameter();
-        if (!hrac.nakupOdNpc(menoNpc)) {
-            System.out.format("Nenasiel si npc %s%n", menoNpc);
+        try {
+            hrac.nakupOdNpc(menoNpc);
+        } catch (NpcNespravnehoTypuException ex) {
+            System.out.format("Npc %s ti nema co ponuknut%n", menoNpc);
+        } catch (NpcNenajdeneException ex) {
+            System.out.format("Npc %s nikde nevidis%n", menoNpc);
         }
     }
 
     private void utocNaNpc(Hrac hrac, Prikaz prikaz) {
         String menoNpc = prikaz.getParameter();
-        if (!hrac.utocNaNpc(menoNpc)) {
-            System.out.format("Nenasiel si npc %s%n", menoNpc);
+        try {
+            hrac.utocNaNpc(menoNpc);
+        } catch (NpcNespravnehoTypuException ex) {
+            System.out.format("Npc %s s tebou bojovat nechce%n", menoNpc);
+        } catch (NpcNenajdeneException ex) {
+            System.out.format("Npc %s nikde nevidis%n", menoNpc);
         }
     }
 }

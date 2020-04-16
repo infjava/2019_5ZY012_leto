@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
+import sk.uniza.fri.wof.hlavny.NpcNenajdeneException;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -91,7 +92,13 @@ public class Miestnost {
         this.npccka.put(npc.getMeno(), npc);
     }
 
-    public Npc getNpc(String menoNpc) {
-        return this.npccka.get(menoNpc);
+    public Npc getNpc(String menoNpc) throws NpcNenajdeneException {
+        Npc npc = this.npccka.get(menoNpc);
+        
+        if (npc == null) {
+            throw new NpcNenajdeneException();
+        }
+        
+        return npc;
     }
 }

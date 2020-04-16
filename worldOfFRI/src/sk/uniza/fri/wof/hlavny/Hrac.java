@@ -111,10 +111,6 @@ public class Hrac {
     public void oslovNpc(String menoNpc) throws NpcNespravnehoTypuException, NpcNenajdeneException {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
         
-        if (npc == null) {
-            throw new NpcNenajdeneException();
-        }
-        
         if (!(npc instanceof NpcSRozhovorom)) {
             throw new NpcNespravnehoTypuException();
         }
@@ -124,10 +120,6 @@ public class Hrac {
 
     public void nakupOdNpc(String menoNpc) throws NpcNenajdeneException, NpcNespravnehoTypuException {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
-        
-        if (npc == null) {
-            throw new NpcNenajdeneException();
-        }
         
         if (!(npc instanceof Obchodnik)) {
             throw new NpcNespravnehoTypuException();
@@ -175,10 +167,6 @@ public class Hrac {
 
     public void utocNaNpc(String menoNpc) throws NpcNenajdeneException, NpcNespravnehoTypuException {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
-        
-        if (npc == null) {
-            throw new NpcNenajdeneException();
-        }
         
         if (!(npc instanceof Nepriatel)) {
             throw new NpcNespravnehoTypuException();

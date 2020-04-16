@@ -23,8 +23,19 @@ public class NpcSRozhovorom extends Npc {
         
         do {
             aktualny.vypis();
-            int moznost = vstup.nextInt();
-            aktualny = aktualny.getNasledujuci(moznost);
+            
+            int moznost;
+            try {
+                moznost = Integer.parseInt(vstup.nextLine());
+            } catch (NumberFormatException e) {
+                continue;
+            }
+            
+            try {
+                aktualny = aktualny.getNasledujuci(moznost);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                continue;
+            }
         } while (!aktualny.jeKoniecRozhovoru());
         
         aktualny.vypis();

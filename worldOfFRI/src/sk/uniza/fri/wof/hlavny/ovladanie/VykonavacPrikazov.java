@@ -1,8 +1,8 @@
 package sk.uniza.fri.wof.hlavny.ovladanie;
 
 import sk.uniza.fri.wof.hlavny.Hrac;
-import sk.uniza.fri.wof.hlavny.NpcNenajdeneException;
-import sk.uniza.fri.wof.hlavny.NpcNespravnehoTypuException;
+import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
+import sk.uniza.fri.wof.vynimky.NpcNespravnehoTypuException;
 
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 

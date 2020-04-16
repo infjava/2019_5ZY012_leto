@@ -5,6 +5,9 @@
  */
 package sk.uniza.fri.wof.hlavny;
 
+import sk.uniza.fri.wof.vynimky.HracZomrelException;
+import sk.uniza.fri.wof.vynimky.NpcNespravnehoTypuException;
+import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
 import sk.uniza.fri.wof.questy.Questbook;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.wof.hlavny;
+package sk.uniza.fri.wof.vynimky;
 
 /**
  *
  * @author janik
  */
-public class NpcNenajdeneException extends Exception {
-    
+public class HracZomrelException extends RuntimeException {
+
 }

@@ -1,5 +1,6 @@
 package sk.uniza.fri.wof.hlavny;
 
+import sk.uniza.fri.wof.vynimky.HracZomrelException;
 import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 import sk.uniza.fri.wof.hlavny.ovladanie.Parser;
 import sk.uniza.fri.wof.hlavny.ovladanie.Prikaz;

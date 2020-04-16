@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
-import sk.uniza.fri.wof.hlavny.NpcNenajdeneException;
+import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.

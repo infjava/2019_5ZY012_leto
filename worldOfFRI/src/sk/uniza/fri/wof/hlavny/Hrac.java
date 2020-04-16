@@ -108,15 +108,18 @@ public class Hrac {
         return this.questbook;
     }
 
-    public boolean oslovNpc(String menoNpc) {
+    public void oslovNpc(String menoNpc) throws NpcNespravnehoTypuException, NpcNenajdeneException {
         Npc npc = this.aktualnaMiestnost.getNpc(menoNpc);
         
-        if (npc instanceof NpcSRozhovorom) {
-            ((NpcSRozhovorom) npc).spustiRozhovor();
-            return true;
+        if (npc == null) {
+            throw new NpcNenajdeneException();
         }
         
-        return false;
+        if (!(npc instanceof NpcSRozhovorom)) {
+            throw new NpcNespravnehoTypuException();
+        }
+        
+        ((NpcSRozhovorom) npc).spustiRozhovor();
     }
 
     public boolean nakupOdNpc(String menoNpc) {

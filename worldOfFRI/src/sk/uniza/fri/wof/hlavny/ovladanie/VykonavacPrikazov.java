@@ -1,6 +1,8 @@
 package sk.uniza.fri.wof.hlavny.ovladanie;
 
 import sk.uniza.fri.wof.hlavny.Hrac;
+import sk.uniza.fri.wof.hlavny.NpcNenajdeneException;
+import sk.uniza.fri.wof.hlavny.NpcNespravnehoTypuException;
 
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
@@ -175,8 +177,12 @@ public class VykonavacPrikazov {
 
     private void oslovNpc(Hrac hrac, Prikaz prikaz) {
         String menoNpc = prikaz.getParameter();
-        if (!hrac.oslovNpc(menoNpc)) {
-            System.out.format("Nenasiel si npc %s%n", menoNpc);
+        try {
+            hrac.oslovNpc(menoNpc);
+        } catch (NpcNespravnehoTypuException ex) {
+            System.out.format("Npc %s sa s tebou rozpravat nechce%n", menoNpc);
+        } catch (NpcNenajdeneException ex) {
+            System.out.format("Npc %s nikde nevidis%n", menoNpc);
         }
     }
 

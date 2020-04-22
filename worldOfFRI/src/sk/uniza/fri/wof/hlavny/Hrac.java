@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.hlavny;
 
+import java.io.DataOutputStream;
 import sk.uniza.fri.wof.vynimky.HracZomrelException;
 import sk.uniza.fri.wof.vynimky.NpcNespravnehoTypuException;
 import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;

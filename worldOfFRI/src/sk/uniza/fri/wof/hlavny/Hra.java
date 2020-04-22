@@ -33,6 +33,9 @@ import sk.uniza.fri.wof.prostredie.Miestnost;
 */
  
 public class Hra  {
+    private static final int IDENTIFIKACIA_SAVE = 0xFFAA3387;
+    private static final int VERZIA_SAVE = 1;
+    
     private Parser parser;
     private final HraciaPlocha hraciaPlocha;
     private final Hrac hrac;
@@ -89,7 +92,8 @@ public class Hra  {
         File suborPozicie = new File(nazovPozicie + ".save");
         
         try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(suborPozicie))) {
-            
+            pozicia.writeInt(Hra.IDENTIFIKACIA_SAVE);
+            pozicia.writeInt(Hra.VERZIA_SAVE);
         } catch (IOException ex) {
             throw new NuspesnySaveException();
         }

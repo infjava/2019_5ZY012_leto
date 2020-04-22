@@ -35,6 +35,12 @@ predmety
     > pouzi navleky
   - zahodit
     > zahod index
+save system
+- ulozenie pozicie do suboru
+  > save nazov_pozicie
+  subor sa vola nazov_pozicie.save
+- nacitanie pozicie zo suboru
+  > load nazov_pozicie
 */
 
 import sk.uniza.fri.wof.hlavny.Hra;

@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.hlavny;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import sk.uniza.fri.wof.vynimky.HracZomrelException;
@@ -14,6 +15,7 @@ import sk.uniza.fri.wof.questy.Questbook;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 import sk.uniza.fri.wof.prostredie.predmety.Bageta;
 import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
 import sk.uniza.fri.wof.prostredie.Miestnost;
@@ -195,5 +197,10 @@ public class Hrac {
 
     void ulozPoziciu(DataOutputStream pozicia) throws IOException {
         pozicia.writeUTF(this.aktualnaMiestnost.getNazov());
+    }
+
+    void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha) throws IOException {
+        String nazovMiestnosti = pozicia.readUTF();
+        this.aktualnaMiestnost = hraciaPlocha.getMiestnost(nazovMiestnosti);
     }
 }

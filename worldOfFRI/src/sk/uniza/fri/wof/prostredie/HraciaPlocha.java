@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
+import java.util.HashMap;
 import sk.uniza.fri.wof.hlavny.Hra;
 import sk.uniza.fri.wof.prostredie.predmety.Navleky;
 import sk.uniza.fri.wof.prostredie.predmety.Bageta;
@@ -23,18 +24,21 @@ import sk.uniza.fri.wof.prostredie.npccka.Nepriatel;
 public class HraciaPlocha {
 
     private final Miestnost pociatocnaMiestnost;
+    private final HashMap<String, Miestnost> miestnosti;
 
     public HraciaPlocha() {
-        Miestnost bus = new Miestnost("autobus", "ide sa domov");
-        Miestnost bufet = new Miestnost("bufet", "tu ti daju bagetu a pizzu");
-        Miestnost parkovisko = new Miestnost("parkovisko", "plne aut, bicyklov, kolobeziek, tiav a koni");
-        Miestnost rc = new Miestnost("rc", "chodba v podzemi");
-        Miestnost ra006 = new Miestnost("ra006", "miestnost plna pilne programujucich studentov");
-        Miestnost ra = new Miestnost("ra", "chodba s vytrinkami plnymi historickych artefaktov");
-        Miestnost vratnica = new Miestnost("vratnica", "tu na nas ciha pani Vratnicka");
-        Miestnost rb = new Miestnost("rb", "temna chodba");
-        Miestnost chillZone = new Miestnost("chillzona", "mozte sa tu schladit v prijemnom prostredi huciacich pocitacov");
-        Miestnost ic = new Miestnost("ic", "kniznica");
+        this.miestnosti = new HashMap<String, Miestnost>();
+        
+        Miestnost bus = this.newMiestnost("autobus", "ide sa domov");
+        Miestnost bufet = this.newMiestnost("bufet", "tu ti daju bagetu a pizzu");
+        Miestnost parkovisko = this.newMiestnost("parkovisko", "plne aut, bicyklov, kolobeziek, tiav a koni");
+        Miestnost rc = this.newMiestnost("rc", "chodba v podzemi");
+        Miestnost ra006 = this.newMiestnost("ra006", "miestnost plna pilne programujucich studentov");
+        Miestnost ra = this.newMiestnost("ra", "chodba s vytrinkami plnymi historickych artefaktov");
+        Miestnost vratnica = this.newMiestnost("vratnica", "tu na nas ciha pani Vratnicka");
+        Miestnost rb = this.newMiestnost("rb", "temna chodba");
+        Miestnost chillZone = this.newMiestnost("chillzona", "mozte sa tu schladit v prijemnom prostredi huciacich pocitacov");
+        Miestnost ic = this.newMiestnost("ic", "kniznica");
         
         bus.nastavVychod("vychod", parkovisko);
         
@@ -91,5 +95,15 @@ public class HraciaPlocha {
 
     public Miestnost getPociatocnaMiestnost() {
         return this.pociatocnaMiestnost;
+    }
+    
+    public Miestnost getMiestnost(String nazov) {
+        return this.miestnosti.get(nazov);
+    }
+
+    private Miestnost newMiestnost(String nazov, String popis) {
+        Miestnost miestnost = new Miestnost(nazov, popis);
+        this.miestnosti.put(nazov, miestnost);
+        return miestnost;
     }
 }

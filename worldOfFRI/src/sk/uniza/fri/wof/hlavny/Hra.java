@@ -116,6 +116,8 @@ public class Hra  {
             if (pozicia.readInt() > Hra.VERZIA_SAVE) {
                 throw new NuspesnyLoadException();
             }
+            
+            this.hrac.nacitajPoziciu(pozicia, this.hraciaPlocha);
         } catch (FileNotFoundException ex) {
             throw new SaveNenajdenyException();
         } catch (IOException ex) {

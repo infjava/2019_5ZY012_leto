@@ -236,6 +236,8 @@ public class VykonavacPrikazov {
         String nazovPozicie = prikaz.getParameter();
         try {
             this.hra.nacitajPoziciu(nazovPozicie);
+            
+            hrac.getAktualnaMiestnost().vypisInfoOMiestnosti();
         } catch (SaveNenajdenyException ex) {
             System.out.println("Asi si zadal zly nazov save, taky nepoznam");
         } catch (NuspesnyLoadException ex) {

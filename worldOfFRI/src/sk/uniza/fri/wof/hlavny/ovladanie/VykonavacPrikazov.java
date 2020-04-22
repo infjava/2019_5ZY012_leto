@@ -4,7 +4,9 @@ import sk.uniza.fri.wof.hlavny.Hra;
 import sk.uniza.fri.wof.hlavny.Hrac;
 import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
 import sk.uniza.fri.wof.vynimky.NpcNespravnehoTypuException;
+import sk.uniza.fri.wof.vynimky.NuspesnyLoadException;
 import sk.uniza.fri.wof.vynimky.NuspesnySaveException;
+import sk.uniza.fri.wof.vynimky.SaveNenajdenyException;
 
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
@@ -21,7 +23,7 @@ public class VykonavacPrikazov {
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "dvihni", "inventar",
         "zahod", "pouzi", "questbook", "dobryden",
-        "masnieco", "utoc", "save"
+        "masnieco", "utoc", "save", "load"
     };
     private final Hra hra;
 
@@ -97,6 +99,9 @@ public class VykonavacPrikazov {
                 return false;
             case "save":
                 this.ulozPoziciu(hrac, prikaz);
+                return false;
+            case "load":
+                this.nacitajPoziciu(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -224,6 +229,17 @@ public class VykonavacPrikazov {
             this.hra.ulozPoziciu(nazovPozicie);
         } catch (NuspesnySaveException ex) {
             System.out.println("Nepodarilo sa ulozit save, skus znovu");
+        }
+    }
+
+    private void nacitajPoziciu(Hrac hrac, Prikaz prikaz) {
+        String nazovPozicie = prikaz.getParameter();
+        try {
+            this.hra.nacitajPoziciu(nazovPozicie);
+        } catch (SaveNenajdenyException ex) {
+            System.out.println("Asi si zadal zly nazov save, taky nepoznam");
+        } catch (NuspesnyLoadException ex) {
+            System.out.println("Nepodarilo sa nacitat data savu");
         }
     }
 }

@@ -1,8 +1,13 @@
 package sk.uniza.fri.wof.hlavny;
 
+import sk.uniza.fri.wof.vynimky.NuspesnyLoadException;
+import sk.uniza.fri.wof.vynimky.SaveNenajdenyException;
+import java.io.DataInputStream;
 import sk.uniza.fri.wof.vynimky.NuspesnySaveException;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import sk.uniza.fri.wof.vynimky.HracZomrelException;
@@ -97,6 +102,24 @@ public class Hra  {
             this.hrac.ulozPoziciu(pozicia);
         } catch (IOException ex) {
             throw new NuspesnySaveException();
+        }
+    }
+
+    public void nacitajPoziciu(String nazovPozicie) throws SaveNenajdenyException, NuspesnyLoadException {
+        File suborPozicie = new File(nazovPozicie + ".save");
+        
+        try (DataInputStream pozicia = new DataInputStream(new FileInputStream(suborPozicie))) {
+            if (pozicia.readInt() != Hra.IDENTIFIKACIA_SAVE) {
+                throw new NuspesnyLoadException();
+            }
+            
+            if (pozicia.readInt() > Hra.VERZIA_SAVE) {
+                throw new NuspesnyLoadException();
+            }
+        } catch (FileNotFoundException ex) {
+            throw new SaveNenajdenyException();
+        } catch (IOException ex) {
+            throw new NuspesnyLoadException();
         }
     }
 }

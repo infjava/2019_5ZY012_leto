@@ -25,16 +25,16 @@ public class HraciaPlocha {
     private final Miestnost pociatocnaMiestnost;
 
     public HraciaPlocha() {
-        Miestnost bus = new Miestnost("autobus - ide sa domov");
-        Miestnost bufet = new Miestnost("bufet - tu ti daju bagetu a pizzu");
-        Miestnost parkovisko = new Miestnost("parkovisko - plne aut, bicyklov, kolobeziek, tiav a koni");
-        Miestnost rc = new Miestnost("rc - chodba v podzemi");
-        Miestnost ra006 = new Miestnost("ra006 - miestnost plna pilne programujucich studentov");
-        Miestnost ra = new Miestnost("ra - chodba s vytrinkami plnymi historickych artefaktov");
-        Miestnost vratnica = new Miestnost("vratnica - tu na nas ciha pani Vratnicka");
-        Miestnost rb = new Miestnost("rb - temna chodba");
-        Miestnost chillZone = new Miestnost("chillzona - mozte sa tu schladit v prijemnom prostredi huciacich pocitacov");
-        Miestnost ic = new Miestnost("ic - kniznica");
+        Miestnost bus = new Miestnost("autobus", "ide sa domov");
+        Miestnost bufet = new Miestnost("bufet", "tu ti daju bagetu a pizzu");
+        Miestnost parkovisko = new Miestnost("parkovisko", "plne aut, bicyklov, kolobeziek, tiav a koni");
+        Miestnost rc = new Miestnost("rc", "chodba v podzemi");
+        Miestnost ra006 = new Miestnost("ra006", "miestnost plna pilne programujucich studentov");
+        Miestnost ra = new Miestnost("ra", "chodba s vytrinkami plnymi historickych artefaktov");
+        Miestnost vratnica = new Miestnost("vratnica", "tu na nas ciha pani Vratnicka");
+        Miestnost rb = new Miestnost("rb", "temna chodba");
+        Miestnost chillZone = new Miestnost("chillzona", "mozte sa tu schladit v prijemnom prostredi huciacich pocitacov");
+        Miestnost ic = new Miestnost("ic", "kniznica");
         
         bus.nastavVychod("vychod", parkovisko);
         

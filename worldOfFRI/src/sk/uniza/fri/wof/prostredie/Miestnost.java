@@ -22,6 +22,7 @@ import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
  * @version 2012.02.21
  */
 public class Miestnost {
+    private String nazov;
     private String popisMiestnosti;
     private TreeMap<String, Miestnost> vychody;
     private final HashMap<String, IPredmet> predmety;
@@ -34,7 +35,8 @@ public class Miestnost {
      * 
      * @param popis text popisu miestnosti.
      */
-    public Miestnost(String popis) {
+    public Miestnost(String nazov, String popis) {
+        this.nazov = nazov;
         this.popisMiestnosti = popis;
         this.vychody = new TreeMap<String, Miestnost>();
         this.predmety = new HashMap<String, IPredmet>();
@@ -59,8 +61,13 @@ public class Miestnost {
         return this.popisMiestnosti;
     }
 
+    public String getNazov() {
+        return this.nazov;
+    }
+
     public void vypisInfoOMiestnosti() {
-        System.out.println("Teraz si v miestnosti " + this.getPopis());
+        System.out.println("Teraz si v miestnosti " + this.nazov);
+        System.out.println(this.popisMiestnosti);
         this.vypisInfoOPolozkach("Vychody", this.vychody.keySet());
         this.vypisInfoOPolozkach("Predmety", this.predmety.keySet());
         this.vypisInfoOPolozkach("Npc", this.npccka.keySet());

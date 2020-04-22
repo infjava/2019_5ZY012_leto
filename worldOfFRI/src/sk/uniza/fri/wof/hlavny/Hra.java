@@ -10,7 +10,6 @@ import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 import sk.uniza.fri.wof.hlavny.ovladanie.Parser;
 import sk.uniza.fri.wof.hlavny.ovladanie.Prikaz;
 import sk.uniza.fri.wof.hlavny.ovladanie.VykonavacPrikazov;
-import sk.uniza.fri.wof.prostredie.Miestnost;
 
 /**
  * Trieda Hra je hlavna trieda aplikacie "World of FRI".
@@ -94,6 +93,8 @@ public class Hra  {
         try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(suborPozicie))) {
             pozicia.writeInt(Hra.IDENTIFIKACIA_SAVE);
             pozicia.writeInt(Hra.VERZIA_SAVE);
+            
+            this.hrac.ulozPoziciu(pozicia);
         } catch (IOException ex) {
             throw new NuspesnySaveException();
         }

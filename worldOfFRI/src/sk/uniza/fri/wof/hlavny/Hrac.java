@@ -6,6 +6,7 @@
 package sk.uniza.fri.wof.hlavny;
 
 import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.vynimky.HracZomrelException;
 import sk.uniza.fri.wof.vynimky.NpcNespravnehoTypuException;
 import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
@@ -190,5 +191,9 @@ public class Hrac {
                 System.out.println("Bola remiza");
                 break;
         }
+    }
+
+    void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        pozicia.writeUTF(this.aktualnaMiestnost.getNazov());
     }
 }

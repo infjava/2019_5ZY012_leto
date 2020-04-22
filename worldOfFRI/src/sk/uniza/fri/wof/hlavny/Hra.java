@@ -1,5 +1,10 @@
 package sk.uniza.fri.wof.hlavny;
 
+import sk.uniza.fri.wof.vynimky.NuspesnySaveException;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.vynimky.HracZomrelException;
 import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 import sk.uniza.fri.wof.hlavny.ovladanie.Parser;
@@ -39,7 +44,7 @@ public class Hra  {
     public Hra() {
         this.hraciaPlocha = new HraciaPlocha();
         this.hrac = new Hrac(this.hraciaPlocha.getPociatocnaMiestnost());
-        this.vykonavacPrikazov = new VykonavacPrikazov();
+        this.vykonavacPrikazov = new VykonavacPrikazov(this);
         this.parser = new Parser(this.vykonavacPrikazov);
     }
 
@@ -78,5 +83,15 @@ public class Hra  {
         System.out.println("Zadaj 'pomoc' ak potrebujes pomoc.");
         System.out.println();
         this.hrac.getAktualnaMiestnost().vypisInfoOMiestnosti();
+    }
+
+    public void ulozPoziciu(String nazovPozicie) throws NuspesnySaveException {
+        File suborPozicie = new File(nazovPozicie + ".save");
+        
+        try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(suborPozicie))) {
+            
+        } catch (IOException ex) {
+            throw new NuspesnySaveException();
+        }
     }
 }

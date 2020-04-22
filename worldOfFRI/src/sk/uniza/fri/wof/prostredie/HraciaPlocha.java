@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
+import sk.uniza.fri.wof.hlavny.Hra;
 import sk.uniza.fri.wof.prostredie.predmety.Navleky;
 import sk.uniza.fri.wof.prostredie.predmety.Bageta;
 import sk.uniza.fri.wof.prostredie.predmety.ZbytocnyPredmet;

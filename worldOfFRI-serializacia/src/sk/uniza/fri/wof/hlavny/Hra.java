@@ -54,6 +54,10 @@ public class Hra  {
         this.parser = new Parser(this.vykonavacPrikazov);
     }
 
+    public Hrac getHrac() {
+        return this.hrac;
+    }
+
     /**
      *  Hlavna metoda hry.
      *  Cyklicky opakuje kroky hry, kym hrac hru neukonci.

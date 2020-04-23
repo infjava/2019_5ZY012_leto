@@ -197,10 +197,23 @@ public class Hrac {
 
     void ulozPoziciu(DataOutputStream pozicia) throws IOException {
         pozicia.writeUTF(this.aktualnaMiestnost.getNazov());
+        pozicia.writeInt(this.inventar.size());
+        for (String nazovPredmetu : this.inventar.keySet()) {
+            pozicia.writeUTF(nazovPredmetu);
+        }
     }
 
-    void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha) throws IOException {
+    void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) throws IOException {
         String nazovMiestnosti = pozicia.readUTF();
         this.aktualnaMiestnost = hraciaPlocha.getMiestnost(nazovMiestnosti);
+        
+        if (verziaSave >= 2) { // mame ulozeny aj inventar
+            this.inventar.clear();
+            int pocetPredmetov = pozicia.readInt();
+            for (int i = 0; i < pocetPredmetov; i++) {
+                String nazovPredmetu = pozicia.readUTF();
+                this.inventar.put(nazovPredmetu, hraciaPlocha.vytvorPredmet(nazovPredmetu));
+            }
+        }
     }
 }

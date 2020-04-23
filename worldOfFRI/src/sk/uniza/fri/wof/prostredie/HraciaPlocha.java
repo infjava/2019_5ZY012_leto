@@ -16,6 +16,7 @@ import sk.uniza.fri.wof.prostredie.npccka.Obchodnik;
 import sk.uniza.fri.wof.prostredie.npccka.NpcSRozhovorom;
 import sk.uniza.fri.wof.prostredie.npccka.HranaRozhovoru;
 import sk.uniza.fri.wof.prostredie.npccka.Nepriatel;
+import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
 
 /**
  *
@@ -105,5 +106,18 @@ public class HraciaPlocha {
         Miestnost miestnost = new Miestnost(nazov, popis);
         this.miestnosti.put(nazov, miestnost);
         return miestnost;
+    }
+
+    public IPredmet vytvorPredmet(String nazovPredmetu) {
+        switch (nazovPredmetu) {
+            case "dezo":
+                return new Dezo();
+            case "bageta":
+                return new Bageta();
+            case "navleky":
+                return new Navleky();
+            default:
+                return new ZbytocnyPredmet(nazovPredmetu);
+        }
     }
 }

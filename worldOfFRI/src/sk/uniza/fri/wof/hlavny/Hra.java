@@ -38,7 +38,7 @@ import sk.uniza.fri.wof.hlavny.ovladanie.VykonavacPrikazov;
  
 public class Hra  {
     private static final int IDENTIFIKACIA_SAVE = 0xFFAA3387;
-    private static final int VERZIA_SAVE = 1;
+    private static final int VERZIA_SAVE = 2;
     
     private Parser parser;
     private final HraciaPlocha hraciaPlocha;
@@ -113,11 +113,12 @@ public class Hra  {
                 throw new NuspesnyLoadException();
             }
             
-            if (pozicia.readInt() > Hra.VERZIA_SAVE) {
+            final int verziaSave = pozicia.readInt();
+            if (verziaSave > Hra.VERZIA_SAVE) {
                 throw new NuspesnyLoadException();
             }
             
-            this.hrac.nacitajPoziciu(pozicia, this.hraciaPlocha);
+            this.hrac.nacitajPoziciu(pozicia, this.hraciaPlocha, verziaSave);
         } catch (FileNotFoundException ex) {
             throw new SaveNenajdenyException();
         } catch (IOException ex) {

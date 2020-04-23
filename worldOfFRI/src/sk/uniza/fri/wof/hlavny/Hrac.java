@@ -208,7 +208,7 @@ public class Hrac {
         String nazovMiestnosti = pozicia.readUTF();
         this.aktualnaMiestnost = hraciaPlocha.getMiestnost(nazovMiestnosti);
         
-        if (verziaSave >= 2) { // mame ulozeny aj inventar
+        if (verziaSave >= Verzie.UKLADANIE_INVENTARA) {
             this.inventar.clear();
             int pocetPredmetov = pozicia.readInt();
             for (int i = 0; i < pocetPredmetov; i++) {

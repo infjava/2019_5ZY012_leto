@@ -38,7 +38,6 @@ import sk.uniza.fri.wof.hlavny.ovladanie.VykonavacPrikazov;
  
 public class Hra  {
     private static final int IDENTIFIKACIA_SAVE = 0xFFAA3387;
-    private static final int VERZIA_SAVE = 3;
     
     private Parser parser;
     private final HraciaPlocha hraciaPlocha;
@@ -97,7 +96,7 @@ public class Hra  {
         
         try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(suborPozicie))) {
             pozicia.writeInt(Hra.IDENTIFIKACIA_SAVE);
-            pozicia.writeInt(Hra.VERZIA_SAVE);
+            pozicia.writeInt(Verzie.POSLEDNA);
             
             this.hrac.ulozPoziciu(pozicia);
         } catch (IOException ex) {
@@ -114,7 +113,7 @@ public class Hra  {
             }
             
             final int verziaSave = pozicia.readInt();
-            if (verziaSave > Hra.VERZIA_SAVE) {
+            if (verziaSave > Verzie.POSLEDNA) {
                 throw new NuspesnyLoadException();
             }
             

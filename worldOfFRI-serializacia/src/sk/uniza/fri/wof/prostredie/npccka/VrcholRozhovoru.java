@@ -5,11 +5,13 @@
  */
 package sk.uniza.fri.wof.prostredie.npccka;
 
+import java.io.Serializable;
+
 /**
  *
  * @author janik
  */
-public class VrcholRozhovoru {
+public class VrcholRozhovoru implements Serializable {
 
     private final String replikaNpc;
     private final HranaRozhovoru[] hrany;

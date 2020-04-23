@@ -1,6 +1,7 @@
 package sk.uniza.fri.wof.prostredie;
 
 
+import java.io.Serializable;
 import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
 import sk.uniza.fri.wof.prostredie.npccka.Npc;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
  * @author  lokalizacia: Lubomir Sadlon, Jan Janech
  * @version 2012.02.21
  */
-public class Miestnost {
+public class Miestnost implements Serializable {
     private String nazov;
     private String popisMiestnosti;
     private TreeMap<String, Miestnost> vychody;

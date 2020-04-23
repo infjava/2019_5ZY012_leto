@@ -5,11 +5,13 @@
  */
 package sk.uniza.fri.wof.questy;
 
+import java.io.Serializable;
+
 /**
  *
  * @author janik
  */
-public class QuestPrechadzaniaMiestnostami {
+public class QuestPrechadzaniaMiestnostami implements Serializable {
 
     private final int pocet;
     private int aktualnyStav;

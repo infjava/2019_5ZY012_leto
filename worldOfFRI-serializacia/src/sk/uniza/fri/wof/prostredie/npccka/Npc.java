@@ -5,11 +5,13 @@
  */
 package sk.uniza.fri.wof.prostredie.npccka;
 
+import java.io.Serializable;
+
 /**
  *
  * @author janik
  */
-public abstract class Npc {
+public abstract class Npc implements Serializable {
 
     private final String meno;
 

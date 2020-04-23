@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.wof.hlavny.Hrac;
 
 /**
  *
  * @author janik
  */
-public class ZbytocnyPredmet implements IPredmet {
+public class ZbytocnyPredmet implements IPredmet, Serializable {
 
     private final String nazov;
 

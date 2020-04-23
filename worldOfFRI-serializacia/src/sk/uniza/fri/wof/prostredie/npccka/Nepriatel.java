@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.wof.prostredie.npccka;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author janik
  */
-public class Nepriatel extends Npc {
+public class Nepriatel extends Npc implements Serializable {
 
     public Nepriatel(String meno) {
         super(meno);

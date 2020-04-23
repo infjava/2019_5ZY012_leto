@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.wof.hlavny.Hrac;
 
 /**
  *
  * @author janik
  */
-public class Navleky implements IPredmet {
+public class Navleky implements IPredmet, Serializable {
 
     private boolean obute;
 

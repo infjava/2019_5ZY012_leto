@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.hlavny;
 
+import java.io.Serializable;
 import sk.uniza.fri.wof.vynimky.HracZomrelException;
 import sk.uniza.fri.wof.vynimky.NpcNespravnehoTypuException;
 import sk.uniza.fri.wof.vynimky.NpcNenajdeneException;
@@ -24,7 +25,7 @@ import sk.uniza.fri.wof.prostredie.npccka.Utok;
  *
  * @author janik
  */
-public class Hrac {
+public class Hrac implements Serializable {
     private Miestnost aktualnaMiestnost;
     private final HashMap<String, IPredmet> inventar;
     private final Questbook questbook;

@@ -4,6 +4,12 @@ import sk.uniza.fri.wof.vynimky.NuspesnyLoadException;
 import sk.uniza.fri.wof.vynimky.SaveNenajdenyException;
 import sk.uniza.fri.wof.vynimky.NuspesnySaveException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import sk.uniza.fri.wof.vynimky.HracZomrelException;
 import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 import sk.uniza.fri.wof.hlavny.ovladanie.Parser;
@@ -34,8 +40,8 @@ public class Hra  {
     private static final int IDENTIFIKACIA_SAVE = 0xFFAA3387;
     
     private Parser parser;
-    private final HraciaPlocha hraciaPlocha;
-    private final Hrac hrac;
+    private HraciaPlocha hraciaPlocha;
+    private Hrac hrac;
     private final VykonavacPrikazov vykonavacPrikazov;
     
     /**
@@ -87,9 +93,29 @@ public class Hra  {
 
     public void ulozPoziciu(String nazovPozicie) throws NuspesnySaveException {
         File suborPozicie = new File(nazovPozicie + ".save");
+        
+        try (ObjectOutputStream pozicia = new ObjectOutputStream(new FileOutputStream(suborPozicie))) {
+            pozicia.writeObject(this.hrac);
+            pozicia.writeObject(this.hraciaPlocha);
+        } catch (IOException ex) {
+            throw new NuspesnySaveException();
+        }
     }
 
     public void nacitajPoziciu(String nazovPozicie) throws SaveNenajdenyException, NuspesnyLoadException {
         File suborPozicie = new File(nazovPozicie + ".save");
+        
+        try (ObjectInputStream pozicia = new ObjectInputStream(new FileInputStream(suborPozicie))) {
+            this.hrac = (Hrac) pozicia.readObject();
+            this.hraciaPlocha = (HraciaPlocha) pozicia.readObject();
+        } catch (FileNotFoundException ex) {
+            throw new SaveNenajdenyException();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            throw new NuspesnyLoadException();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+            throw new NuspesnyLoadException();
+        }
     }
 }

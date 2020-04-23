@@ -5,10 +5,11 @@
  */
 package sk.uniza.fri.wof.prostredie.npccka;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 
-public class NpcSRozhovorom extends Npc {
+public class NpcSRozhovorom extends Npc implements Serializable {
 
     private final VrcholRozhovoru zaciatokRozhovoru;
 

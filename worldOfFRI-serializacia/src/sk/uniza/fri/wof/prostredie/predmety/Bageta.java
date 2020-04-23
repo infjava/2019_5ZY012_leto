@@ -5,10 +5,11 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.wof.hlavny.Hrac;
 
 
-public class Bageta implements IPredmet {
+public class Bageta implements IPredmet, Serializable {
 
     private int pocetZahryznuti;
 

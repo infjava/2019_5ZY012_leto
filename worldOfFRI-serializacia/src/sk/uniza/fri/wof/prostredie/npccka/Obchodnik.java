@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.prostredie.npccka;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
 
@@ -12,7 +13,7 @@ import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
  *
  * @author janik
  */
-public class Obchodnik extends Npc {
+public class Obchodnik extends Npc implements Serializable {
 
     private final IPredmet[] tovar;
 

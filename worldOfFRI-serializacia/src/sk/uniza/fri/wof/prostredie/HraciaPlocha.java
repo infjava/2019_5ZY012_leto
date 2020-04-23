@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import sk.uniza.fri.wof.hlavny.Hra;
 import sk.uniza.fri.wof.prostredie.predmety.Navleky;
@@ -22,7 +23,7 @@ import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
  *
  * @author janik
  */
-public class HraciaPlocha {
+public class HraciaPlocha implements Serializable {
 
     private final Miestnost pociatocnaMiestnost;
     private final HashMap<String, Miestnost> miestnosti;

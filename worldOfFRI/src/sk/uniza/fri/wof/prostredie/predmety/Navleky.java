@@ -5,7 +5,11 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hlavny.Hrac;
+import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 
 /**
  *
@@ -38,6 +42,18 @@ public class Navleky implements IPredmet {
     @Override
     public boolean daSaPolozit() {
         return !this.obute;
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        pozicia.writeBoolean(this.obute);
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) throws IOException {
+        if (verziaSave >= 3) { // mame aj stav predmetu
+            this.obute = pozicia.readBoolean();
+        }
     }
     
 }

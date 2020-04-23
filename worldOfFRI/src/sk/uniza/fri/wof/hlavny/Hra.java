@@ -38,7 +38,7 @@ import sk.uniza.fri.wof.hlavny.ovladanie.VykonavacPrikazov;
  
 public class Hra  {
     private static final int IDENTIFIKACIA_SAVE = 0xFFAA3387;
-    private static final int VERZIA_SAVE = 2;
+    private static final int VERZIA_SAVE = 3;
     
     private Parser parser;
     private final HraciaPlocha hraciaPlocha;

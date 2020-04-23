@@ -5,7 +5,10 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import sk.uniza.fri.wof.hlavny.Hrac;
+import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 
 /**
  *
@@ -32,6 +35,16 @@ public class ZbytocnyPredmet implements IPredmet {
     @Override
     public boolean daSaPolozit() {
         return true;
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) {
+        
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) {
+        
     }
     
 }

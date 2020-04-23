@@ -5,7 +5,11 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hlavny.Hrac;
+import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 
 
 public class Bageta implements IPredmet {
@@ -36,6 +40,18 @@ public class Bageta implements IPredmet {
     @Override
     public boolean daSaPolozit() {
         return true;
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        pozicia.writeInt(this.pocetZahryznuti);
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) throws IOException {
+        if (verziaSave >= 3) { // mame aj stav predmetu
+            this.pocetZahryznuti = pozicia.readInt();
+        }
     }
     
 }

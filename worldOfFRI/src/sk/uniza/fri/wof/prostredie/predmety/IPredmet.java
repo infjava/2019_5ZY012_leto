@@ -5,7 +5,11 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hlavny.Hrac;
+import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 
 /**
  *
@@ -18,4 +22,8 @@ public interface IPredmet {
     void pouziSa(Hrac hrac);
     
     boolean daSaPolozit();
+
+    void ulozPoziciu(DataOutputStream pozicia) throws IOException;
+
+    void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) throws IOException;
 }

@@ -5,7 +5,11 @@
  */
 package sk.uniza.fri.wof.prostredie.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.wof.hlavny.Hrac;
+import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 import sk.uniza.fri.wof.questy.QuestPrechadzaniaMiestnostami;
 
 
@@ -41,6 +45,18 @@ public class Dezo implements IPredmet {
     @Override
     public boolean daSaPolozit() {
         return true;
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        pozicia.writeBoolean(this.dalQuest);
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) throws IOException {
+        if (verziaSave >= 3) { // mame aj stav predmetu
+            this.dalQuest = pozicia.readBoolean();
+        }
     }
     
 }

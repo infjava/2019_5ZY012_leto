@@ -42,6 +42,8 @@ public class HraciaPlocha implements Serializable {
         Miestnost chillZone = this.newMiestnost("chillzona", "mozte sa tu schladit v prijemnom prostredi huciacich pocitacov");
         Miestnost ic = this.newMiestnost("ic", "kniznica");
         
+        bufet.vlozPredmet(new ZbytocnyPredmet("krabica"));
+        
         bus.nastavVychod("vychod", parkovisko);
         
         bufet.nastavVychod("sever", parkovisko);

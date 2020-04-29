@@ -75,6 +75,17 @@ public class HraciaPlocha {
                                 vychody.add(new DefiniciaVychodu(posledna, riadok.next(), riadok.next()));
                                 break;
                             case NPC:
+                                switch (riadok.next()) {
+                                    case "obchodnik":
+                                        break;
+                                    case "nepriatel":
+                                        posledna.postavNpc(new Nepriatel(riadok.next()));
+                                        break;
+                                    case "rozhovor":
+                                        break;
+                                    default:
+                                        throw new AssertionError();
+                                }
                                 break;
                             case PREDMETY:
                                 posledna.vlozPredmet(this.vytvorPredmet(riadok.next()));

@@ -38,6 +38,8 @@ public class HraciaPlocha {
     private void nacitajMapu(String nazovSuboru) {
         File suborMapy = new File(nazovSuboru);
         try (Scanner subor = new Scanner(suborMapy)) {
+            Miestnost posledna = null;
+            
             while (subor.hasNextLine()) {                
                 String riadokString = subor.nextLine();
                 Scanner riadok = new Scanner(riadokString);
@@ -48,6 +50,7 @@ public class HraciaPlocha {
                 
                 switch (riadok.next()) {
                     case "Miestnost":
+                        posledna = this.newMiestnost(riadok.next(), riadok.nextLine().strip());
                         break;
                     case "Vychody:":
                         break;
@@ -56,6 +59,7 @@ public class HraciaPlocha {
                     case "Predmety:":
                         break;
                     case "Start":
+                        this.pociatocnaMiestnost = posledna;
                         break;
                     case "-":
                         break;

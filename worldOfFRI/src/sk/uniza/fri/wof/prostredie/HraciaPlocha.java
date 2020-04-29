@@ -39,6 +39,7 @@ public class HraciaPlocha {
         File suborMapy = new File(nazovSuboru);
         try (Scanner subor = new Scanner(suborMapy)) {
             Miestnost posledna = null;
+            SekciaDefinicieMiestnosti sekcia = null;
             
             while (subor.hasNextLine()) {                
                 String riadokString = subor.nextLine();
@@ -53,10 +54,13 @@ public class HraciaPlocha {
                         posledna = this.newMiestnost(riadok.next(), riadok.nextLine().strip());
                         break;
                     case "Vychody:":
+                        sekcia = SekciaDefinicieMiestnosti.VYCHODY;
                         break;
                     case "Npc:":
+                        sekcia = SekciaDefinicieMiestnosti.NPC;
                         break;
                     case "Predmety:":
+                        sekcia = SekciaDefinicieMiestnosti.PREDMETY;
                         break;
                     case "Start":
                         this.pociatocnaMiestnost = posledna;

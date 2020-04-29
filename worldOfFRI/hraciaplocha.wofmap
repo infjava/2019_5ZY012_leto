@@ -1,0 +1,71 @@
+Miestnost autobus ide sa domov
+Vychody:
+- vychod parkovisko
+
+Miestnost bufet tu ti daju bagetu a pizzu
+Vychody:
+- sever parkovisko
+- vychod rc
+Npc:
+- obchodnik kucharka
+  * pizza
+  * bageta
+  * navleky
+
+Miestnost parkovisko plne aut, bicyklov, kolobeziek, tiav a koni
+Vychody:
+- zapad bus
+- hore vratnica
+- sever bufet
+
+Miestnost rc chodba v podzemi
+Vychody:
+- zapad bufet
+- hore ra
+
+Miestnost ra006 miestnost plna pilne programujucich studentov
+Vychody:
+- vychod ra
+
+Miestnost ra chodba s vytrinkami plnymi historickych artefaktov
+Vychody:
+- zapad ra006
+- dole rc
+- juh vratnica
+
+Miestnost vratnica tu na nas ciha pani Vratnicka
+Vychody:
+- juh rb
+- sever ra
+- vychod ic
+- dole parkovisko
+Predmety:
+- klavesnica
+- dezo
+
+Npc:
+- rozhovor upratovacka
+  * kde najdem ucitela
+    ** Ktory?
+    ** Janech
+      *** Ma cvicenie
+    ** dekan
+      *** Netusim
+  * nemate toaletny papier?
+    ** Mam, ale nedam. Kup si v Tescu.
+  * kde to som?
+    ** Pouzi prikaz pomoc
+- nepriatel ucitel
+
+Miestnost rb temna chodba
+Vychody:
+- sever vratnica
+- juh chillZone
+
+Miestnost chillzona mozte sa tu schladit v prijemnom prostredi huciacich pocitacov
+Vychody:
+- sever rb
+
+Miestnost ic kniznica
+Vychody:
+- zapad vratnica

@@ -32,15 +32,48 @@ public class HraciaPlocha {
 
     public HraciaPlocha() {
         this.miestnosti = new HashMap<String, Miestnost>();
-        this.nacitajMapu("hraciaplocha1.wofmap");
+        this.nacitajMapu("hraciaplocha.wofmap");
     }
 
     private void nacitajMapu(String nazovSuboru) {
         File suborMapy = new File(nazovSuboru);
         try (Scanner subor = new Scanner(suborMapy)) {
+            while (subor.hasNextLine()) {                
+                String riadokString = subor.nextLine();
+                Scanner riadok = new Scanner(riadokString);
+                
+                if (!riadok.hasNext()) {
+                    continue;
+                }
+                
+                switch (riadok.next()) {
+                    case "Miestnost":
+                        break;
+                    case "Vychody:":
+                        break;
+                    case "Npc:":
+                        break;
+                    case "Predmety:":
+                        break;
+                    case "Start":
+                        break;
+                    case "-":
+                        break;
+                    case "*":
+                    case "**":
+                    case "***":
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            }
             
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Nenasiel sa subor s mapou", ex);
+        }
+        
+        if (this.pociatocnaMiestnost == null) {
+            throw new RuntimeException("V mape chyba definicia pociatocnej miestnosti");
         }
     }
 

@@ -66,7 +66,19 @@ public class HraciaPlocha {
                         this.pociatocnaMiestnost = posledna;
                         break;
                     case "-":
+                        switch (sekcia) {
+                            case VYCHODY:
+                                break;
+                            case NPC:
+                                break;
+                            case PREDMETY:
+                                posledna.vlozPredmet(this.vytvorPredmet(riadok.next()));
+                                break;
+                            default:
+                                throw new AssertionError();
+                        }
                         break;
+
                     case "*":
                     case "**":
                     case "***":

@@ -14,7 +14,7 @@ Npc:
 
 Miestnost parkovisko plne aut, bicyklov, kolobeziek, tiav a koni
 Vychody:
-- zapad bus
+- zapad autobus
 - hore vratnica
 - sever bufet
 
@@ -61,7 +61,7 @@ Npc:
 Miestnost rb temna chodba
 Vychody:
 - sever vratnica
-- juh chillZone
+- juh chillzona
 
 Miestnost chillzona mozte sa tu schladit v prijemnom prostredi huciacich pocitacov
 Vychody:

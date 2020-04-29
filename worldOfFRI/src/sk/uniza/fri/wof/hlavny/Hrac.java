@@ -25,6 +25,7 @@ import sk.uniza.fri.wof.prostredie.npccka.NpcSRozhovorom;
 import sk.uniza.fri.wof.prostredie.npccka.Obchodnik;
 import sk.uniza.fri.wof.prostredie.npccka.Utok;
 import sk.uniza.fri.wof.prostredie.predmety.ZbytocnyPredmet;
+import sk.uniza.fri.wof.vynimky.MiestnostNenajdenaException;
 
 /**
  *
@@ -204,7 +205,7 @@ public class Hrac {
         }
     }
 
-    void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) throws IOException {
+    void nacitajPoziciu(DataInputStream pozicia, HraciaPlocha hraciaPlocha, int verziaSave) throws IOException, MiestnostNenajdenaException {
         String nazovMiestnosti = pozicia.readUTF();
         this.aktualnaMiestnost = hraciaPlocha.getMiestnost(nazovMiestnosti);
         

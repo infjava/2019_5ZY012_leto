@@ -15,6 +15,7 @@ import sk.uniza.fri.wof.prostredie.HraciaPlocha;
 import sk.uniza.fri.wof.hlavny.ovladanie.Parser;
 import sk.uniza.fri.wof.hlavny.ovladanie.Prikaz;
 import sk.uniza.fri.wof.hlavny.ovladanie.VykonavacPrikazov;
+import sk.uniza.fri.wof.vynimky.MiestnostNenajdenaException;
 
 /**
  * Trieda Hra je hlavna trieda aplikacie "World of FRI".
@@ -121,6 +122,8 @@ public class Hra  {
         } catch (FileNotFoundException ex) {
             throw new SaveNenajdenyException();
         } catch (IOException ex) {
+            throw new NuspesnyLoadException();
+        } catch (MiestnostNenajdenaException ex) {
             throw new NuspesnyLoadException();
         }
     }

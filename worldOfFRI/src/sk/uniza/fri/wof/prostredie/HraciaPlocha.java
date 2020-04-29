@@ -5,8 +5,10 @@
  */
 package sk.uniza.fri.wof.prostredie;
 
+import sk.uniza.fri.wof.vynimky.MiestnostNenajdenaException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import sk.uniza.fri.wof.hlavny.Hra;
@@ -41,6 +43,8 @@ public class HraciaPlocha {
             Miestnost posledna = null;
             SekciaDefinicieMiestnosti sekcia = null;
             
+            ArrayList<DefiniciaVychodu> vychody = new ArrayList<DefiniciaVychodu>();
+            
             while (subor.hasNextLine()) {                
                 String riadokString = subor.nextLine();
                 Scanner riadok = new Scanner(riadokString);
@@ -68,6 +72,7 @@ public class HraciaPlocha {
                     case "-":
                         switch (sekcia) {
                             case VYCHODY:
+                                vychody.add(new DefiniciaVychodu(posledna, riadok.next(), riadok.next()));
                                 break;
                             case NPC:
                                 break;
@@ -88,8 +93,14 @@ public class HraciaPlocha {
                 }
             }
             
+            for (DefiniciaVychodu vychod : vychody) {
+                vychod.vytvor(this);
+            }
+            
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Nenasiel sa subor s mapou", ex);
+        } catch (MiestnostNenajdenaException ex) {
+            throw new RuntimeException("Nenasla sa miestnost", ex);
         }
         
         if (this.pociatocnaMiestnost == null) {
@@ -101,8 +112,12 @@ public class HraciaPlocha {
         return this.pociatocnaMiestnost;
     }
     
-    public Miestnost getMiestnost(String nazov) {
-        return this.miestnosti.get(nazov);
+    public Miestnost getMiestnost(String nazov) throws MiestnostNenajdenaException {
+        Miestnost miestnost = this.miestnosti.get(nazov);
+        if (miestnost == null) {
+            throw new MiestnostNenajdenaException();
+        }
+        return miestnost;
     }
 
     private Miestnost newMiestnost(String nazov, String popis) {

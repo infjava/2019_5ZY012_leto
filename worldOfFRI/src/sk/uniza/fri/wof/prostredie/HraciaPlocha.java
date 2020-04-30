@@ -56,7 +56,7 @@ public class HraciaPlocha {
                 
                 final String prikaz = riadok.next();
                 
-                if (!prikaz.equals("*") && !prikaz.equals("**") && !prikaz.equals("***") && npc != null) {
+                if (!this.suHviezdicky(prikaz) && npc != null) {
                     npc.vytvor(posledna, this);
                     npc = null;
                 }
@@ -105,13 +105,12 @@ public class HraciaPlocha {
                         }
                         break;
 
-                    case "*":
-                    case "**":
-                    case "***":
-                        npc.pridajPolozku(prikaz.length(), riadok.nextLine().strip());
-                        break;
                     default:
-                        throw new AssertionError();
+                        if (this.suHviezdicky(prikaz)) {
+                            npc.pridajPolozku(prikaz.length(), riadok.nextLine().strip());
+                        } else {
+                            throw new AssertionError();
+                        }
                 }
             }
             
@@ -159,5 +158,15 @@ public class HraciaPlocha {
             default:
                 return new ZbytocnyPredmet(nazovPredmetu);
         }
+    }
+
+    private boolean suHviezdicky(String prikaz) {
+        for (int i = 0; i < prikaz.length(); i++) {
+            if (prikaz.charAt(i) != '*') {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }

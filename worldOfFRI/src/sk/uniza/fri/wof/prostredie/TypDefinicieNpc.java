@@ -10,5 +10,6 @@ package sk.uniza.fri.wof.prostredie;
  * @author janik
  */
 enum TypDefinicieNpc {
-    OBCHODNIK
+    OBCHODNIK,
+    ROZHOVOR
 }

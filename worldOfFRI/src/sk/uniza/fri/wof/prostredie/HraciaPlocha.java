@@ -56,7 +56,7 @@ public class HraciaPlocha {
                 
                 final String prikaz = riadok.next();
                 
-                if (!prikaz.equals("*") && npc != null) {
+                if (!prikaz.equals("*") && !prikaz.equals("**") && !prikaz.equals("***") && npc != null) {
                     npc.vytvor(posledna, this);
                     npc = null;
                 }
@@ -91,6 +91,7 @@ public class HraciaPlocha {
                                         posledna.postavNpc(new Nepriatel(riadok.next()));
                                         break;
                                     case "rozhovor":
+                                        npc = new DefiniciaNpc(TypDefinicieNpc.ROZHOVOR, riadok.next());
                                         break;
                                     default:
                                         throw new AssertionError();
@@ -105,11 +106,9 @@ public class HraciaPlocha {
                         break;
 
                     case "*":
-                        if (npc != null)
-                            npc.pridajPolozku(riadok.nextLine().strip());
-                        break;
                     case "**":
                     case "***":
+                        npc.pridajPolozku(prikaz.length(), riadok.nextLine().strip());
                         break;
                     default:
                         throw new AssertionError();

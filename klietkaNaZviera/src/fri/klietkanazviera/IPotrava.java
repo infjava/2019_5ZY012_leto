@@ -7,8 +7,9 @@ package fri.klietkanazviera;
 
 /**
  *
+ * @param T zviera, pre ktore je potrava urcena
  * @author janik
  */
-interface IPotrava {
+interface IPotrava<T> {
     
 }

@@ -16,4 +16,9 @@ public class Lev extends Zviera {
         return "Lev";
     }
 
+    @Override
+    public void zjedz(IPotrava potrava) {
+        System.out.println("Lev hlasno zozral " + potrava);
+    }
+
 }

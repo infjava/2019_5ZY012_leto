@@ -10,5 +10,5 @@ package fri.klietkanazviera;
  * @author janik
  */
 abstract class Zviera {
-    
+    public abstract void zjedz(IPotrava potrava);
 }

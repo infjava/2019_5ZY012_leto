@@ -24,10 +24,6 @@ public class KlietkaNaZviera {
         klietkaNaMys.vloz(new Mys());
         klietkaNaMys.vlozPotravu(new Syr());
         System.out.println(klietkaNaMys);
-        
-        Klietka<Integer> klietkaNaCeleCisla = new Klietka<Integer>();
-        klietkaNaCeleCisla.vloz(0);
-        System.out.println(klietkaNaCeleCisla);
     }
     
 }

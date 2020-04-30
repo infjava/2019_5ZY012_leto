@@ -9,12 +9,6 @@ package fri.klietkanazviera;
  *
  * @author janik
  */
-public class Mys extends Zviera implements IPotrava {
-
-    @Override
-    public String toString() {
-        return "Mys";
-    }
-
+interface IPotrava {
     
 }

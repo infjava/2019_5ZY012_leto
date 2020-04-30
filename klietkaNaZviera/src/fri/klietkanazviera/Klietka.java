@@ -26,5 +26,9 @@ class Klietka<E> {
     public String toString() {
         return "Klietka{" + "zviera=" + zviera + '}';
     }
+
+    void vlozPotravu(IPotrava potrava) {
+        System.out.println("Zviera " + this.zviera + " zjedlo " + potrava);
+    }
     
 }

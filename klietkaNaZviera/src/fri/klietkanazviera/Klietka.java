@@ -11,19 +11,19 @@ package fri.klietkanazviera;
  */
 class Klietka {
 
-    private Lev lev;
+    private Zviera zviera;
 
     public Klietka() {
-        this.lev = null;
+        this.zviera = null;
     }
     
-    void vloz(Lev lev) {
-        this.lev = lev;
+    void vloz(Zviera zviera) {
+        this.zviera = zviera;
     }
 
     @Override
     public String toString() {
-        return "Klietka{" + "lev=" + lev + '}';
+        return "Klietka{" + "zviera=" + zviera + '}';
     }
     
 }

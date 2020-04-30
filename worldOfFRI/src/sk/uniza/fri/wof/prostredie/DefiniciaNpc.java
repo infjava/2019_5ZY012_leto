@@ -6,7 +6,10 @@
 package sk.uniza.fri.wof.prostredie;
 
 import java.util.ArrayList;
+import sk.uniza.fri.wof.prostredie.npccka.HranaRozhovoru;
+import sk.uniza.fri.wof.prostredie.npccka.NpcSRozhovorom;
 import sk.uniza.fri.wof.prostredie.npccka.Obchodnik;
+import sk.uniza.fri.wof.prostredie.npccka.VrcholRozhovoru;
 import sk.uniza.fri.wof.prostredie.predmety.IPredmet;
 
 /**
@@ -41,11 +44,34 @@ class DefiniciaNpc {
                 miestnost.postavNpc(new Obchodnik(this.nazov, tovar));
                 break;
             case ROZHOVOR:
-                this.polozky.vypisDebug(0);
+                miestnost.postavNpc(new NpcSRozhovorom(this.nazov, this.vytvorVrcholRozhovoru(true, this.polozky)));
                 break;
             default:
                 throw new AssertionError();
         }
+    }
+
+    private VrcholRozhovoru vytvorVrcholRozhovoru(boolean jePrvy, DefiniciaPolozky polozky) {
+        int prvyIndex;
+        String replikaNpc;
+        
+        if (jePrvy) {
+            prvyIndex = 0;
+            replikaNpc = null;
+        } else {
+            prvyIndex = 1;
+            replikaNpc = polozky.getPodpolozka(0).getPolozka();
+        }
+        
+        int pocet = polozky.pocetPodpoloziek() - prvyIndex;
+        HranaRozhovoru[] hrany = new HranaRozhovoru[pocet];
+        
+        for (int i = 0; i < pocet; i++) {
+            DefiniciaPolozky polozka = polozky.getPodpolozka(i + prvyIndex);
+            hrany[i] = new HranaRozhovoru(polozka.getPolozka(), this.vytvorVrcholRozhovoru(false, polozka));
+        }
+        
+        return new VrcholRozhovoru(replikaNpc, hrany);
     }
     
 }

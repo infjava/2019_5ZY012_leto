@@ -44,6 +44,7 @@ public class HraciaPlocha {
             SekciaDefinicieMiestnosti sekcia = null;
             
             ArrayList<DefiniciaVychodu> vychody = new ArrayList<DefiniciaVychodu>();
+            DefiniciaNpc npc = null;
             
             while (subor.hasNextLine()) {                
                 String riadokString = subor.nextLine();
@@ -53,7 +54,14 @@ public class HraciaPlocha {
                     continue;
                 }
                 
-                switch (riadok.next()) {
+                final String prikaz = riadok.next();
+                
+                if (!prikaz.equals("*") && npc != null) {
+                    npc.vytvor(posledna, this);
+                    npc = null;
+                }
+                
+                switch (prikaz) {
                     case "Miestnost":
                         posledna = this.newMiestnost(riadok.next(), riadok.nextLine().strip());
                         break;
@@ -77,6 +85,7 @@ public class HraciaPlocha {
                             case NPC:
                                 switch (riadok.next()) {
                                     case "obchodnik":
+                                        npc = new DefiniciaNpc(TypDefinicieNpc.OBCHODNIK, riadok.next());
                                         break;
                                     case "nepriatel":
                                         posledna.postavNpc(new Nepriatel(riadok.next()));
@@ -96,6 +105,9 @@ public class HraciaPlocha {
                         break;
 
                     case "*":
+                        if (npc != null)
+                            npc.pridajPolozku(riadok.nextLine().strip());
+                        break;
                     case "**":
                     case "***":
                         break;

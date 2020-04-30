@@ -7,17 +7,18 @@ package fri.klietkanazviera;
 
 /**
  *
+ * @param E typ zvierata v klietke
  * @author janik
  */
-class Klietka {
+class Klietka<E> {
 
-    private Zviera zviera;
+    private E zviera;
 
     public Klietka() {
         this.zviera = null;
     }
     
-    void vloz(Zviera zviera) {
+    void vloz(E zviera) {
         this.zviera = zviera;
     }
 

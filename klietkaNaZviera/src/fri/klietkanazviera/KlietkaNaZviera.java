@@ -15,11 +15,11 @@ public class KlietkaNaZviera {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Klietka klietkaNaLeva = new Klietka();
+        Klietka<Lev> klietkaNaLeva = new Klietka<Lev>();
         klietkaNaLeva.vloz(new Lev());
         System.out.println(klietkaNaLeva);
         
-        Klietka klietkaNaMys = new Klietka();
+        Klietka<Mys> klietkaNaMys = new Klietka<Mys>();
         klietkaNaMys.vloz(new Mys());
         System.out.println(klietkaNaMys);
     }

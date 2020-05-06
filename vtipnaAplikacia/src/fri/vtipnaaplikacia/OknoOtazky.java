@@ -47,12 +47,9 @@ class OknoOtazky {
         final JButton tlacitko = new JButton(text);
         
         tlacitko.addActionListener(
-            new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel :(");
-                    System.exit(0);
-                }
+            (ActionEvent ae) -> {
+                JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel :(");
+                System.exit(0);
             }
         );
         

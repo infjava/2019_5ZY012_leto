@@ -36,23 +36,15 @@ class OknoOtazky {
 
     private class PresuvacTlacitok extends MouseAdapter {
 
-        private final JButton tlacitko1;
-        private final JButton tlacitko2;
-
-        PresuvacTlacitok(JButton tlacitko1, JButton tlacitko2) {
-            this.tlacitko1 = tlacitko1;
-            this.tlacitko2 = tlacitko2;
-        }
-
         @Override
         public void mouseEntered(MouseEvent me) {
             if (((JButton)me.getComponent()).getText().equals("áno")) {
                 return;
             }
 
-            String zaloha = this.tlacitko1.getText();
-            this.tlacitko1.setText(this.tlacitko2.getText());
-            this.tlacitko2.setText(zaloha);
+            String zaloha = OknoOtazky.this.tlacitko1.getText();
+            OknoOtazky.this.tlacitko1.setText(OknoOtazky.this.tlacitko2.getText());
+            OknoOtazky.this.tlacitko2.setText(zaloha);
         }
 
     }
@@ -74,14 +66,12 @@ class OknoOtazky {
         tlacidla.add(this.tlacitko2);
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
-        
-        this.tlacitko1.addMouseListener(new PresuvacTlacitok(this.tlacitko1, this.tlacitko2));
-        this.tlacitko2.addMouseListener(new PresuvacTlacitok(this.tlacitko1, this.tlacitko2));
     }
     
     private JButton vytvorTlacitko(String text) {
         final JButton tlacitko = new JButton(text);
         tlacitko.addActionListener(new KliknutieNaAno());
+        tlacitko.addMouseListener(new PresuvacTlacitok());
         return tlacitko;
     }
 

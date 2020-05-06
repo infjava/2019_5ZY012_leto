@@ -28,7 +28,9 @@ class OknoOtazky {
         this.okno.add(new JLabel("Chceš z predmetu Informatika 2 známku Fx?"), BorderLayout.NORTH);
         JPanel tlacidla = new JPanel();
         tlacidla.setLayout(new GridLayout(1, 2, 10, 10));
-        tlacidla.add(new JButton("áno"));
+        final JButton anoButton = new JButton("áno");
+        anoButton.addActionListener(new KliknutieNaAno());
+        tlacidla.add(anoButton);
         tlacidla.add(new JButton("nie"));
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();

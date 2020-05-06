@@ -6,9 +6,11 @@
 package fri.vtipnaaplikacia;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
@@ -22,10 +24,13 @@ class OknoOtazky {
     public OknoOtazky() {
         this.okno = new JFrame("Otázka");
         this.okno.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.okno.setLayout(new BorderLayout());
+        this.okno.setLayout(new BorderLayout(10, 10));
         this.okno.add(new JLabel("Chceš z predmetu Informatika 2 známku Fx?"), BorderLayout.NORTH);
-        this.okno.add(new JButton("áno"), BorderLayout.WEST);
-        this.okno.add(new JButton("nie"), BorderLayout.CENTER);
+        JPanel tlacidla = new JPanel();
+        tlacidla.setLayout(new GridLayout(1, 2, 10, 10));
+        tlacidla.add(new JButton("áno"));
+        tlacidla.add(new JButton("nie"));
+        this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
     }
     

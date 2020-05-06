@@ -24,31 +24,6 @@ import javax.swing.WindowConstants;
  */
 class OknoOtazky {
     
-    private class KliknutieNaAno implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel :(");
-            System.exit(0);
-        }
-
-    }
-
-    private class PresuvacTlacitok extends MouseAdapter {
-
-        @Override
-        public void mouseEntered(MouseEvent me) {
-            if (((JButton)me.getComponent()).getText().equals("áno")) {
-                return;
-            }
-
-            String zaloha = OknoOtazky.this.tlacitko1.getText();
-            OknoOtazky.this.tlacitko1.setText(OknoOtazky.this.tlacitko2.getText());
-            OknoOtazky.this.tlacitko2.setText(zaloha);
-        }
-
-    }
-    
     private final JFrame okno;
     private final JButton tlacitko1;
     private final JButton tlacitko2;
@@ -70,8 +45,31 @@ class OknoOtazky {
     
     private JButton vytvorTlacitko(String text) {
         final JButton tlacitko = new JButton(text);
-        tlacitko.addActionListener(new KliknutieNaAno());
-        tlacitko.addMouseListener(new PresuvacTlacitok());
+        
+        tlacitko.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel :(");
+                    System.exit(0);
+                }
+            }
+        );
+        
+        tlacitko.addMouseListener(
+            new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent me) {
+                    if (((JButton)me.getComponent()).getText().equals("áno")) {
+                        return;
+                    }
+
+                    String zaloha = OknoOtazky.this.tlacitko1.getText();
+                    OknoOtazky.this.tlacitko1.setText(OknoOtazky.this.tlacitko2.getText());
+                    OknoOtazky.this.tlacitko2.setText(zaloha);
+                }
+            }
+        );
         return tlacitko;
     }
 

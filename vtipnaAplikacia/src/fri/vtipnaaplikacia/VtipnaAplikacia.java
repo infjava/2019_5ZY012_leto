@@ -5,6 +5,8 @@
  */
 package fri.vtipnaaplikacia;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author janik
@@ -16,6 +18,8 @@ public class VtipnaAplikacia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JOptionPane.showConfirmDialog(null, "Chces z Informatiky 2 znamku Fx?");
+        JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel.");
     }
     
 }

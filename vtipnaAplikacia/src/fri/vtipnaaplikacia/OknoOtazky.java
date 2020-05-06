@@ -7,9 +7,14 @@ package fri.vtipnaaplikacia;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -18,7 +23,40 @@ import javax.swing.WindowConstants;
  * @author janik
  */
 class OknoOtazky {
+    
+    private class KliknutieNaAno implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel :(");
+            System.exit(0);
+        }
+
+    }
+
+    private class PresuvacTlacitok extends MouseAdapter {
+
+        private final JButton tlacitko1;
+        private final JButton tlacitko2;
+
+        PresuvacTlacitok(JButton tlacitko1, JButton tlacitko2) {
+            this.tlacitko1 = tlacitko1;
+            this.tlacitko2 = tlacitko2;
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent me) {
+            if (((JButton)me.getComponent()).getText().equals("áno")) {
+                return;
+            }
+
+            String zaloha = this.tlacitko1.getText();
+            this.tlacitko1.setText(this.tlacitko2.getText());
+            this.tlacitko2.setText(zaloha);
+        }
+
+    }
+    
     private final JFrame okno;
     private final JButton tlacitko1;
     private final JButton tlacitko2;

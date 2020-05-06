@@ -35,15 +35,15 @@ class OknoOtazky {
         this.okno.add(new JLabel("Chceš z predmetu Informatika 2 známku Fx?"), BorderLayout.NORTH);
         JPanel tlacidla = new JPanel();
         tlacidla.setLayout(new GridLayout(1, 2, 10, 10));
-        this.tlacitko1 = this.vytvorTlacitko("áno");
+        this.tlacitko1 = this.vytvorTlacitko("áno", true);
         tlacidla.add(this.tlacitko1);
-        this.tlacitko2 = this.vytvorTlacitko("nie");
+        this.tlacitko2 = this.vytvorTlacitko("nie", false);
         tlacidla.add(this.tlacitko2);
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
     }
     
-    private JButton vytvorTlacitko(String text) {
+    private JButton vytvorTlacitko(String text, boolean maFocus) {
         final JButton tlacitko = new JButton(text);
         
         tlacitko.addActionListener(
@@ -61,12 +61,35 @@ class OknoOtazky {
                         return;
                     }
 
-                    String zaloha = OknoOtazky.this.tlacitko1.getText();
-                    OknoOtazky.this.tlacitko1.setText(OknoOtazky.this.tlacitko2.getText());
-                    OknoOtazky.this.tlacitko2.setText(zaloha);
+                    switch (OknoOtazky.this.tlacitko1.getText()) {
+                        case "áno":
+                            OknoOtazky.this.tlacitko1.setText("nie");
+                            OknoOtazky.this.tlacitko1.setFocusable(false);
+                            OknoOtazky.this.tlacitko2.setText("áno");
+                            OknoOtazky.this.tlacitko2.setFocusable(true);
+                            OknoOtazky.this.tlacitko2.grabFocus();
+                            break;
+                        case "nie":
+                            OknoOtazky.this.tlacitko1.setText("áno");
+                            OknoOtazky.this.tlacitko1.setFocusable(true);
+                            OknoOtazky.this.tlacitko1.grabFocus();
+                            OknoOtazky.this.tlacitko2.setText("nie");
+                            OknoOtazky.this.tlacitko2.setFocusable(false);
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
                 }
             }
         );
+        
+        if (maFocus) {
+            tlacitko.setFocusable(true);
+            tlacitko.grabFocus();
+        } else {
+            tlacitko.setFocusable(false);
+        }
+        
         return tlacitko;
     }
 

@@ -116,13 +116,18 @@ public class HlavneOkno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOdstanActionPerformed
 
     private void lstZoznamStudentovValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstZoznamStudentovValueChanged
-        int idx = this.lstZoznamStudentov.getSelectedIndex();
-        if (idx == -1) {
+        Student student = this.lstZoznamStudentov.getSelectedValue();
+        if (student == null) {
             this.btnOdstan.setEnabled(false);
             this.btnOprav.setEnabled(false);
+            this.txtMeno.setText("");
+            this.txtPriezvisko.setText("");
         } else {
             this.btnOdstan.setEnabled(true);
             this.btnOprav.setEnabled(true);
+            
+            this.txtMeno.setText(student.getMeno());
+            this.txtPriezvisko.setText(student.getPriezvisko());
         }
     }//GEN-LAST:event_lstZoznamStudentovValueChanged
 

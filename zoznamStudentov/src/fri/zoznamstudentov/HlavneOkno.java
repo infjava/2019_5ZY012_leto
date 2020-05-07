@@ -20,7 +20,6 @@ public class HlavneOkno extends javax.swing.JFrame {
      */
     public HlavneOkno() {
         this.zoznam = new DefaultListModel<Student>();
-        this.zoznam.addElement(new Student("Jozko", "Mrkvicka"));
         this.initComponents();
     }
 
@@ -55,6 +54,11 @@ public class HlavneOkno extends javax.swing.JFrame {
         jPanel1.add(txtPriezvisko);
 
         btnPridaj.setText("Pridaj");
+        btnPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPridajActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPridaj);
 
         btnOprav.setText("Oprav");
@@ -67,6 +71,11 @@ public class HlavneOkno extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPridajActionPerformed
+        Student student = new Student(this.txtMeno.getText(), this.txtPriezvisko.getText());
+        this.zoznam.addElement(student);
+    }//GEN-LAST:event_btnPridajActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOdstan;

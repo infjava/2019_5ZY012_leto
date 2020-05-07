@@ -41,6 +41,9 @@
               <Connection code="this.zoznam" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstZoznamStudentovValueChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Student&gt;"/>
           </AuxValues>
@@ -73,12 +76,17 @@
         <Component class="javax.swing.JButton" name="btnOprav">
           <Properties>
             <Property name="text" type="java.lang.String" value="Oprav"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnOdstan">
           <Properties>
             <Property name="text" type="java.lang.String" value="Odstr&#xe1;&#x148;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOdstanActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

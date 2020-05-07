@@ -46,6 +46,11 @@ public class HlavneOkno extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout());
 
         lstZoznamStudentov.setModel(this.zoznam);
+        lstZoznamStudentov.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstZoznamStudentovValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstZoznamStudentov);
 
         getContentPane().add(jScrollPane1);
@@ -63,9 +68,16 @@ public class HlavneOkno extends javax.swing.JFrame {
         jPanel1.add(btnPridaj);
 
         btnOprav.setText("Oprav");
+        btnOprav.setEnabled(false);
         jPanel1.add(btnOprav);
 
         btnOdstan.setText("Odstráň");
+        btnOdstan.setEnabled(false);
+        btnOdstan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOdstanActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnOdstan);
 
         getContentPane().add(jPanel1);
@@ -92,6 +104,22 @@ public class HlavneOkno extends javax.swing.JFrame {
         this.txtPriezvisko.setText("");
         this.txtMeno.grabFocus();
     }//GEN-LAST:event_btnPridajActionPerformed
+
+    private void btnOdstanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdstanActionPerformed
+        int idx = this.lstZoznamStudentov.getSelectedIndex();
+        this.zoznam.removeElementAt(idx);
+    }//GEN-LAST:event_btnOdstanActionPerformed
+
+    private void lstZoznamStudentovValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstZoznamStudentovValueChanged
+        int idx = this.lstZoznamStudentov.getSelectedIndex();
+        if (idx == -1) {
+            this.btnOdstan.setEnabled(false);
+            this.btnOprav.setEnabled(false);
+        } else {
+            this.btnOdstan.setEnabled(true);
+            this.btnOprav.setEnabled(true);
+        }
+    }//GEN-LAST:event_lstZoznamStudentovValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOdstan;

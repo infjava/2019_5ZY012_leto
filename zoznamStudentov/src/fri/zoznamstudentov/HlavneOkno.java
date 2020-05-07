@@ -23,6 +23,7 @@ public class HlavneOkno extends javax.swing.JFrame {
     public HlavneOkno() {
         this.zoznam = new DefaultListModel<Student>();
         this.initComponents();
+        this.txtMeno.grabFocus();
     }
 
     /**

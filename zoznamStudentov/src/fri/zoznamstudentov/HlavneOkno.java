@@ -5,6 +5,7 @@
  */
 package fri.zoznamstudentov;
 
+import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -46,6 +47,11 @@ public class HlavneOkno extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout());
 
         lstZoznamStudentov.setModel(this.zoznam);
+        lstZoznamStudentov.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lstZoznamStudentovKeyPressed(evt);
+            }
+        });
         lstZoznamStudentov.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstZoznamStudentovValueChanged(evt);
@@ -179,6 +185,15 @@ public class HlavneOkno extends javax.swing.JFrame {
     private void studentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusLost
         this.getRootPane().setDefaultButton(null);
     }//GEN-LAST:event_studentFocusLost
+
+    private void lstZoznamStudentovKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lstZoznamStudentovKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            int idx = this.lstZoznamStudentov.getSelectedIndex();
+            if (idx != -1) {
+                this.zoznam.removeElementAt(idx);
+            }
+        }
+    }//GEN-LAST:event_lstZoznamStudentovKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOdstan;

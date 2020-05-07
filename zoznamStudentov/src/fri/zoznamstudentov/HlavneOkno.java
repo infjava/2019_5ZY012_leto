@@ -56,7 +56,25 @@ public class HlavneOkno extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
 
         jPanel1.setLayout(new java.awt.GridLayout(0, 1));
+
+        txtMeno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studentFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                studentFocusLost(evt);
+            }
+        });
         jPanel1.add(txtMeno);
+
+        txtPriezvisko.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studentFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                studentFocusLost(evt);
+            }
+        });
         jPanel1.add(txtPriezvisko);
 
         btnPridaj.setText("Pridaj");
@@ -148,6 +166,19 @@ public class HlavneOkno extends javax.swing.JFrame {
         Student student = new Student(this.txtMeno.getText(), this.txtPriezvisko.getText());
         this.zoznam.setElementAt(student, idx);
     }//GEN-LAST:event_btnOpravActionPerformed
+
+    private void studentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusGained
+        int idx = this.lstZoznamStudentov.getSelectedIndex();
+        if (idx == -1) {
+            this.getRootPane().setDefaultButton(this.btnPridaj);
+        } else {
+            this.getRootPane().setDefaultButton(this.btnOprav);
+        }
+    }//GEN-LAST:event_studentFocusGained
+
+    private void studentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusLost
+        this.getRootPane().setDefaultButton(null);
+    }//GEN-LAST:event_studentFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOdstan;

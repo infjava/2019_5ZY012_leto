@@ -69,6 +69,11 @@ public class HlavneOkno extends javax.swing.JFrame {
 
         btnOprav.setText("Oprav");
         btnOprav.setEnabled(false);
+        btnOprav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpravActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnOprav);
 
         btnOdstan.setText("Odstráň");
@@ -120,6 +125,24 @@ public class HlavneOkno extends javax.swing.JFrame {
             this.btnOprav.setEnabled(true);
         }
     }//GEN-LAST:event_lstZoznamStudentovValueChanged
+
+    private void btnOpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpravActionPerformed
+        int idx = this.lstZoznamStudentov.getSelectedIndex();
+        
+        if (this.txtMeno.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Musis zadat meno");
+            this.txtMeno.grabFocus();
+            return;
+        }
+        if (this.txtPriezvisko.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Musis zadat priezvisko");
+            this.txtPriezvisko.grabFocus();
+            return;
+        }
+        
+        Student student = new Student(this.txtMeno.getText(), this.txtPriezvisko.getText());
+        this.zoznam.setElementAt(student, idx);
+    }//GEN-LAST:event_btnOpravActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOdstan;

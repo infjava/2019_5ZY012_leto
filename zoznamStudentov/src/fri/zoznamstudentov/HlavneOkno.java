@@ -38,14 +38,16 @@ public class HlavneOkno extends javax.swing.JFrame {
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         lstZoznamStudentov = new javax.swing.JList<>();
         javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         txtMeno = new javax.swing.JTextField();
         txtPriezvisko = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         btnPridaj = new javax.swing.JButton();
         btnOprav = new javax.swing.JButton();
         btnOdstan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         lstZoznamStudentov.setModel(this.zoznam);
         lstZoznamStudentov.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -62,7 +64,9 @@ public class HlavneOkno extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
 
-        jPanel1.setLayout(new java.awt.GridLayout(0, 1));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setLayout(new java.awt.GridLayout(0, 1));
 
         txtMeno.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -72,7 +76,7 @@ public class HlavneOkno extends javax.swing.JFrame {
                 studentFocusLost(evt);
             }
         });
-        jPanel1.add(txtMeno);
+        jPanel2.add(txtMeno);
 
         txtPriezvisko.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -82,7 +86,11 @@ public class HlavneOkno extends javax.swing.JFrame {
                 studentFocusLost(evt);
             }
         });
-        jPanel1.add(txtPriezvisko);
+        jPanel2.add(txtPriezvisko);
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.NORTH);
+
+        jPanel3.setLayout(new java.awt.GridLayout(0, 1));
 
         btnPridaj.setText("Pridaj");
         btnPridaj.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +98,7 @@ public class HlavneOkno extends javax.swing.JFrame {
                 btnPridajActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPridaj);
+        jPanel3.add(btnPridaj);
 
         btnOprav.setText("Oprav");
         btnOprav.setEnabled(false);
@@ -99,7 +107,7 @@ public class HlavneOkno extends javax.swing.JFrame {
                 btnOpravActionPerformed(evt);
             }
         });
-        jPanel1.add(btnOprav);
+        jPanel3.add(btnOprav);
 
         btnOdstan.setText("Odstráň");
         btnOdstan.setEnabled(false);
@@ -108,7 +116,9 @@ public class HlavneOkno extends javax.swing.JFrame {
                 btnOdstanActionPerformed(evt);
             }
         });
-        jPanel1.add(btnOdstan);
+        jPanel3.add(btnOdstan);
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel1);
 
@@ -200,6 +210,8 @@ public class HlavneOkno extends javax.swing.JFrame {
     private javax.swing.JButton btnOdstan;
     private javax.swing.JButton btnOprav;
     private javax.swing.JButton btnPridaj;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JList<Student> lstZoznamStudentov;
     private javax.swing.JTextField txtMeno;
     private javax.swing.JTextField txtPriezvisko;
